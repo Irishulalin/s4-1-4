@@ -1,0 +1,2754 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="artifact-type" content="narrative">
+ <meta name="design-style" content="sticker">
+ <title>家鄉的多元文化 — 國小四年級社會互動學習網</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+ <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+ <style>
+ :root {
+ color-scheme: light;
+
+ /* Page and surfaces (Sticker) */
+ --background: #fef7ff;
+ --surface-container-low: #ffffff;
+ --surface-container: #f8eef8;
+ --surface-container-high: #f2e8f2;
+
+ /* Ink */
+ --on-surface: #2e1a28;
+ --on-surface-variant: #604868;
+
+ /* Rules */
+ --outline: #907898;
+ --outline-variant: #dcc8e0;
+
+ /* Accents */
+ --primary: #c2207f;
+ --on-primary: #ffffff;
+ --primary-container: #f8cbe4;
+ --on-primary-container: #2e1a28;
+ --secondary: #7c52aa;
+ --secondary-container: #efe4fb;
+ --on-secondary-container: #381e59;
+ --tertiary: #0096cc;
+ --tertiary-container: #daf2fc;
+ --on-tertiary-container: #0c3e54;
+ --tangerine: #d96a00;
+ --tangerine-container: #ffe9d2;
+ --on-tangerine-container: #5c2a00;
+
+ /* Semantic */
+ --positive: #15803d;
+ --positive-container: #dcfce7;
+ --on-positive-container: #14532d;
+ --warning: #b45309;
+ --warning-container: #fef3c7;
+ --on-warning-container: #78350f;
+ --error: #c53030;
+ --on-error: #ffffff;
+ --error-container: #fee2e2;
+ --on-error-container: #7f1d1d;
+
+ /* Data series */
+ --data-1: #c2207f;
+ --data-2: #7c52aa;
+ --data-3: #0096cc;
+ --data-4: #d96a00;
+ --data-context: #c8b8d0;
+
+ /* Focus */
+ --focus: #c2207f;
+
+ /* Fonts */
+ --font-headline: 'Noto Sans TC', 'DM Sans', sans-serif;
+ --font-body: 'Noto Sans TC', 'DM Sans', sans-serif;
+ --font-label: 'Noto Sans TC', 'DM Sans', sans-serif;
+
+ /* Type scale (Narrative) */
+ --display-size: clamp(2.125rem, 1.35rem + 3.2vw, 3.6rem);
+ --headline-size: clamp(1.5rem, 1.15rem + 1.4vw, 2.25rem);
+ --subhead-size: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem);
+ --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+ --label-size: clamp(0.75rem, 0.72rem + 0.15vw, 0.875rem);
+
+ /* Shape */
+ --rounded: 1rem;
+ --rounded-lg: 2rem;
+ --rounded-full: 9999px;
+
+ /* Spacing scale */
+ --space-xs: 0.25rem;
+ --space-sm: 0.5rem;
+ --space-md: 1rem;
+ --space-lg: 1.5rem;
+ --space-xl: 2.5rem;
+ --space-2xl: 4rem;
+ --space-3xl: 6rem;
+
+ /* Style effects (Tinted colorful shadows, never grey/black) */
+ --shadow-pink: 0 4px 16px rgb(224 64 160 / 0.18);
+ --shadow-pink-deep: 0 10px 28px rgb(224 64 160 / 0.30);
+ --shadow-grape: 0 4px 16px rgb(124 82 170 / 0.18);
+ --shadow-grape-deep: 0 10px 26px rgb(124 82 170 / 0.28);
+ --shadow-sky: 0 4px 16px rgb(0 150 204 / 0.18);
+ --shadow-sky-deep: 0 10px 26px rgb(0 150 204 / 0.28);
+ --pop-scale: scale(1.03);
+ --lift: translateY(-4px);
+
+ /* Motion */
+ --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+ --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+ --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+ --dur-micro: 120ms;
+ --dur-short: 220ms;
+ --dur-long: 420ms;
+ }
+
+ /* Base reset */
+ *, *::before, *::after { box-sizing: border-box; }
+ html, body {
+ overflow-x: clip;
+ margin: 0;
+ padding: 0;
+ background-color: var(--background);
+ color: var(--on-surface);
+ font-family: var(--font-body);
+ font-size: var(--body-size);
+ line-height: 1.65;
+ scroll-behavior: smooth;
+ }
+ header { position: static !important; }
+
+ button, input, select, textarea {
+ font-family: inherit;
+ font-size: inherit;
+ color: inherit;
+ }
+
+ :focus-visible {
+ outline: 3px solid var(--focus);
+ outline-offset: 2px;
+ }
+
+ .page-grid {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr);
+ gap: var(--space-2xl);
+ padding: var(--space-lg);
+ max-width: 1120px;
+ margin: 0 auto;
+ overflow: hidden;
+ }
+ .page-grid * { min-width: 0; }
+
+ /* Typography */
+ h1, h2, h3, h4 {
+ font-family: var(--font-headline);
+ color: var(--on-surface);
+ margin: 0;
+ letter-spacing: 0;
+ }
+
+ .display {
+ font-weight: 900;
+ font-size: var(--display-size);
+ line-height: 1.15;
+ }
+ .display em, .section-title em {
+ font-style: normal;
+ color: var(--primary);
+ }
+
+ .section-title {
+ font-weight: 800;
+ font-size: var(--headline-size);
+ line-height: 1.25;
+ margin-bottom: var(--space-sm);
+ }
+
+ .subhead {
+ font-weight: 700;
+ font-size: var(--subhead-size);
+ line-height: 1.35;
+ }
+
+ .lede {
+ color: var(--on-surface-variant);
+ max-width: 65ch;
+ margin: var(--space-sm) 0 0 0;
+ }
+
+ .kicker {
+ display: inline-flex;
+ align-items: center;
+ gap: var(--space-xs);
+ font-family: var(--font-label);
+ font-size: var(--label-size);
+ font-weight: 700;
+ padding: var(--space-xs) var(--space-md);
+ border-radius: var(--rounded-full);
+ background: var(--primary-container);
+ color: var(--on-primary-container);
+ margin-bottom: var(--space-sm);
+ }
+ .kicker.is-grape {
+ background: var(--secondary-container);
+ color: var(--on-secondary-container);
+ }
+ .kicker.is-sky {
+ background: var(--tertiary-container);
+ color: var(--on-tertiary-container);
+ }
+ .kicker.is-tangerine {
+ background: var(--tangerine-container);
+ color: var(--on-tangerine-container);
+ }
+
+ /* Buttons & Pills */
+ .btn {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: var(--space-xs);
+ border: none;
+ border-radius: var(--rounded-full);
+ padding: var(--space-sm) var(--space-lg);
+ min-height: 44px;
+ font-weight: 700;
+ font-size: var(--body-size);
+ cursor: pointer;
+ transition: transform var(--dur-short) var(--ease-bounce),
+ box-shadow var(--dur-short) var(--ease-out),
+ background-color var(--dur-micro) var(--ease-out);
+ text-decoration: none;
+ }
+ .btn:hover { transform: var(--pop-scale); }
+ .btn:active { transform: scale(0.97); }
+ .btn:disabled {
+ opacity: 0.55;
+ cursor: not-allowed;
+ transform: none;
+ }
+
+ .btn-primary {
+ background-color: var(--primary);
+ color: var(--on-primary);
+ box-shadow: var(--shadow-pink);
+ }
+ .btn-primary:hover { box-shadow: var(--shadow-pink-deep); }
+
+ .btn-secondary {
+ background-color: var(--secondary);
+ color: var(--on-primary);
+ box-shadow: var(--shadow-grape);
+ }
+ .btn-secondary:hover { box-shadow: var(--shadow-grape-deep); }
+
+ .btn-soft {
+ background-color: var(--surface-container);
+ color: var(--on-surface);
+ box-shadow: var(--shadow-sky);
+ }
+ .btn-soft:hover {
+ background-color: var(--surface-container-high);
+ box-shadow: var(--shadow-sky-deep);
+ }
+
+ .btn-quiet {
+ background-color: transparent;
+ color: var(--primary);
+ padding: var(--space-xs) var(--space-md);
+ }
+ .btn-quiet:hover {
+ background-color: var(--surface-container);
+ }
+
+ .chip {
+ display: inline-flex;
+ align-items: center;
+ gap: var(--space-xs);
+ min-height: 44px;
+ padding: var(--space-xs) var(--space-md);
+ border-radius: var(--rounded-full);
+ border: 2px solid var(--outline-variant);
+ background: var(--surface-container-low);
+ color: var(--on-surface);
+ font-weight: 700;
+ font-size: var(--label-size);
+ cursor: pointer;
+ transition: transform var(--dur-short) var(--ease-bounce),
+ background-color var(--dur-micro) var(--ease-out),
+ box-shadow var(--dur-short) var(--ease-out);
+ }
+ .chip:hover {
+ transform: var(--pop-scale);
+ border-color: var(--secondary);
+ }
+ .chip[aria-pressed="true"], .chip.is-active {
+ background: var(--primary);
+ color: var(--on-primary);
+ border-color: var(--primary);
+ box-shadow: var(--shadow-pink);
+ }
+ .chip.is-grape[aria-pressed="true"], .chip.is-grape.is-active {
+ background: var(--secondary);
+ color: var(--on-primary);
+ border-color: var(--secondary);
+ box-shadow: var(--shadow-grape);
+ }
+
+ .tag {
+ display: inline-flex;
+ align-items: center;
+ gap: 4px;
+ padding: 2px 12px;
+ border-radius: var(--rounded-full);
+ border: 1.5px solid var(--secondary);
+ color: var(--secondary);
+ font-size: var(--label-size);
+ font-weight: 700;
+ background: var(--surface-container-low);
+ }
+ .tag.is-pink {
+ border-color: var(--primary);
+ color: var(--primary);
+ }
+ .tag.is-positive {
+ border-color: var(--positive);
+ color: var(--positive);
+ background: var(--positive-container);
+ }
+
+ /* Cards */
+ .card {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded);
+ box-shadow: var(--shadow-pink);
+ padding: var(--space-lg);
+ }
+ .card-sky { box-shadow: var(--shadow-sky); }
+ .card-grape { box-shadow: var(--shadow-grape); }
+
+ .card-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+ gap: var(--space-lg);
+ }
+ .card-grid > .card:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
+ .card-grid > .card:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
+
+ .interactive-card {
+ cursor: pointer;
+ transition: transform var(--dur-short) var(--ease-bounce),
+ box-shadow var(--dur-short) var(--ease-out);
+ }
+ .interactive-card:hover {
+ transform: var(--lift);
+ box-shadow: var(--shadow-pink-deep);
+ }
+
+ /* Hero Panel & Passport Bar */
+ .hero-panel {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded-lg);
+ box-shadow: var(--shadow-pink);
+ padding: var(--space-xl);
+ display: grid;
+ grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+ gap: var(--space-xl);
+ align-items: center;
+ }
+
+ .hero-art {
+ background: var(--surface-container);
+ border-radius: var(--rounded);
+ padding: var(--space-lg);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: var(--space-sm);
+ }
+
+ .nav-pills {
+ display: flex;
+ flex-wrap: wrap;
+ gap: var(--space-sm);
+ margin-top: var(--space-lg);
+ }
+
+ .passport-card {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded);
+ box-shadow: var(--shadow-grape);
+ padding: var(--space-lg);
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-md);
+ }
+
+ .passport-head {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ justify-content: space-between;
+ gap: var(--space-md);
+ }
+
+ .progress-track {
+ width: 100%;
+ height: 16px;
+ background: var(--surface-container-high);
+ border-radius: var(--rounded-full);
+ overflow: hidden;
+ }
+
+ .progress-fill {
+ height: 100%;
+ width: 0%;
+ background: var(--tertiary);
+ border-radius: var(--rounded-full);
+ transition: width var(--dur-long) var(--ease-out);
+ }
+
+ .stamp-row {
+ display: grid;
+ grid-template-columns: repeat(5, minmax(0, 1fr));
+ gap: var(--space-sm);
+ }
+
+ .stamp-pill {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 6px;
+ padding: var(--space-sm);
+ border-radius: var(--rounded-full);
+ background: var(--surface-container);
+ color: var(--on-surface-variant);
+ font-size: var(--label-size);
+ font-weight: 700;
+ text-decoration: none;
+ min-height: 44px;
+ transition: transform var(--dur-short) var(--ease-bounce);
+ }
+ .stamp-pill:hover { transform: var(--pop-scale); }
+ .stamp-pill.is-done {
+ background: var(--positive-container);
+ color: var(--on-positive-container);
+ }
+
+ /* Section Header */
+ .unit-section {
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-lg);
+ padding-top: var(--space-md);
+ }
+
+ .unit-header {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: var(--space-xs);
+ }
+
+ /* Unit 1: Food Matching & Fusion Builder */
+ .split-lab {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+ gap: var(--space-lg);
+ align-items: start;
+ }
+
+ .match-columns {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+ gap: var(--space-md);
+ }
+
+ .match-col {
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-sm);
+ }
+
+ .match-btn {
+ width: 100%;
+ text-align: left;
+ justify-content: flex-start;
+ padding: var(--space-sm) var(--space-md);
+ min-height: 54px;
+ border-radius: var(--rounded);
+ border: 2px solid var(--outline-variant);
+ background: var(--surface-container-low);
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ gap: var(--space-sm);
+ font-weight: 700;
+ transition: transform var(--dur-short) var(--ease-bounce),
+ background-color var(--dur-micro) var(--ease-out),
+ box-shadow var(--dur-short) var(--ease-out);
+ }
+ .match-btn:hover:not(:disabled) {
+ transform: var(--pop-scale);
+ border-color: var(--primary);
+ }
+ .match-btn.is-selected {
+ background: var(--primary-container);
+ border-color: var(--primary);
+ color: var(--on-primary-container);
+ box-shadow: var(--shadow-pink);
+ }
+ .match-btn.is-matched {
+ background: var(--positive-container);
+ border-color: var(--positive);
+ color: var(--on-positive-container);
+ cursor: default;
+ }
+ .match-btn.is-wrong {
+ background: var(--error-container);
+ border-color: var(--error);
+ color: var(--on-error-container);
+ }
+
+ .feedback-banner {
+ padding: var(--space-md) var(--space-lg);
+ border-radius: var(--rounded);
+ background: var(--surface-container);
+ color: var(--on-surface);
+ display: flex;
+ align-items: flex-start;
+ gap: var(--space-sm);
+ margin-top: var(--space-md);
+ }
+ .feedback-banner.is-success {
+ background: var(--positive-container);
+ color: var(--on-positive-container);
+ }
+ .feedback-banner.is-error {
+ background: var(--error-container);
+ color: var(--on-error-container);
+ }
+ .feedback-banner.is-info {
+ background: var(--tertiary-container);
+ color: var(--on-tertiary-container);
+ }
+
+ .fusion-stage {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr);
+ gap: var(--space-md);
+ }
+
+ .fusion-plate {
+ background: var(--surface-container);
+ border-radius: var(--rounded);
+ padding: var(--space-lg);
+ display: grid;
+ grid-template-columns: auto minmax(0, 1fr);
+ gap: var(--space-lg);
+ align-items: center;
+ }
+
+ .choice-row {
+ display: flex;
+ flex-wrap: wrap;
+ gap: var(--space-sm);
+ }
+
+ .saved-dishes-list {
+ display: flex;
+ flex-wrap: wrap;
+ gap: var(--space-sm);
+ margin-top: var(--space-sm);
+ }
+
+ /* Unit 2: Clothing Flip Cards & Occasion Switcher */
+ .flip-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+ gap: var(--space-lg);
+ }
+
+ .flip-card {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded);
+ box-shadow: var(--shadow-pink);
+ padding: var(--space-lg);
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ gap: var(--space-md);
+ min-height: 350px;
+ cursor: pointer;
+ transition: transform var(--dur-short) var(--ease-bounce),
+ box-shadow var(--dur-short) var(--ease-out);
+ text-align: left;
+ border: 2px solid transparent;
+ }
+ .flip-card:nth-child(2) { box-shadow: var(--shadow-sky); }
+ .flip-card:nth-child(3) { box-shadow: var(--shadow-grape); }
+ .flip-card:nth-child(4) { box-shadow: var(--shadow-pink); }
+ .flip-card:hover { transform: var(--lift); }
+ .flip-card.is-flipped {
+ background: var(--surface-container);
+ border-color: var(--secondary);
+ }
+
+ .costume-art-box {
+ width: 100%;
+ height: 136px;
+ border-radius: var(--rounded);
+ background: var(--surface-container);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: var(--space-sm);
+ }
+
+ .occasion-panel {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+ gap: var(--space-lg);
+ align-items: center;
+ }
+
+ /* Unit 3: Non-audio Multilingual Visual Cards */
+ .lang-card-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+ gap: var(--space-lg);
+ }
+
+ .lang-card {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded);
+ box-shadow: var(--shadow-sky);
+ padding: var(--space-lg);
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-sm);
+ }
+ .lang-card:nth-child(2n) { box-shadow: var(--shadow-grape); }
+ .lang-card:nth-child(3n) { box-shadow: var(--shadow-pink); }
+
+ .phrase-box {
+ background: var(--surface-container);
+ border-radius: var(--rounded);
+ padding: var(--space-md);
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+ }
+
+ .phrase-native {
+ font-size: 1.45rem;
+ font-weight: 900;
+ color: var(--on-surface);
+ line-height: 1.3;
+ }
+
+ .phrase-roman {
+ font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+ font-size: 1rem;
+ font-weight: 700;
+ color: var(--primary);
+ }
+
+ .phrase-tip {
+ font-size: var(--label-size);
+ color: var(--on-surface-variant);
+ background: var(--surface-container-low);
+ border-radius: var(--rounded-full);
+ padding: 4px 12px;
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ align-self: flex-start;
+ margin-top: 4px;
+ }
+
+ .public-sign-board {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded);
+ box-shadow: var(--shadow-grape);
+ padding: var(--space-lg);
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-md);
+ }
+
+ .sign-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+ gap: var(--space-md);
+ }
+
+ .sign-tile {
+ background: var(--surface-container);
+ border-radius: var(--rounded);
+ padding: var(--space-md);
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+ }
+
+ /* Unit 4: Naming Stories & Interactive Survey */
+ .student-name-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+ gap: var(--space-lg);
+ }
+
+ .name-story-card {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded);
+ box-shadow: var(--shadow-pink);
+ padding: var(--space-lg);
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-sm);
+ }
+ .name-story-card:nth-child(2) { box-shadow: var(--shadow-sky); }
+ .name-story-card:nth-child(3) { box-shadow: var(--shadow-grape); }
+ .name-story-card:nth-child(4) { box-shadow: var(--shadow-sky); }
+
+ .name-breakdown {
+ display: flex;
+ flex-wrap: wrap;
+ gap: var(--space-xs);
+ margin: var(--space-xs) 0;
+ }
+
+ .name-part {
+ background: var(--primary-container);
+ color: var(--on-primary-container);
+ border-radius: var(--rounded);
+ padding: 4px 10px;
+ font-weight: 700;
+ font-size: var(--label-size);
+ }
+ .name-part.is-second {
+ background: var(--secondary-container);
+ color: var(--on-secondary-container);
+ }
+
+ .survey-grid {
+ display: grid;
+ grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+ gap: var(--space-lg);
+ align-items: start;
+ }
+
+ .form-field {
+ display: flex;
+ flex-direction: column;
+ gap: 6px;
+ margin-bottom: var(--space-md);
+ }
+
+ .form-label {
+ font-weight: 700;
+ font-size: var(--label-size);
+ color: var(--on-surface);
+ }
+
+ .pill-input, .pill-select {
+ width: 100%;
+ min-height: 44px;
+ border-radius: var(--rounded-full);
+ border: 2px solid var(--outline);
+ background: var(--surface-container);
+ padding: var(--space-sm) var(--space-md);
+ color: var(--on-surface);
+ transition: border-color var(--dur-micro) var(--ease-out);
+ }
+ .pill-select {
+ padding-right: 2.5rem;
+ }
+ .pill-textarea {
+ width: 100%;
+ min-height: 92px;
+ border-radius: var(--rounded);
+ border: 2px solid var(--outline);
+ background: var(--surface-container);
+ padding: var(--space-sm) var(--space-md);
+ color: var(--on-surface);
+ resize: vertical;
+ }
+ .pill-input:focus, .pill-select:focus, .pill-textarea:focus {
+ border-color: var(--primary);
+ outline: none;
+ box-shadow: 0 0 0 3px var(--primary-container);
+ }
+
+ .name-badge-preview {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded-lg);
+ box-shadow: var(--shadow-grape);
+ padding: var(--space-xl);
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-md);
+ border: 3px dashed var(--secondary);
+ }
+
+ /* Unit 5: Quiz & Reflection */
+ .quiz-container {
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-lg);
+ }
+
+ .quiz-option-list {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr);
+ gap: var(--space-sm);
+ }
+
+ .quiz-option {
+ width: 100%;
+ text-align: left;
+ min-height: 48px;
+ padding: var(--space-sm) var(--space-lg);
+ border-radius: var(--rounded-full);
+ border: 2px solid var(--outline-variant);
+ background: var(--surface-container-low);
+ color: var(--on-surface);
+ font-weight: 700;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ gap: var(--space-sm);
+ transition: transform var(--dur-short) var(--ease-bounce),
+ background-color var(--dur-micro) var(--ease-out);
+ }
+ .quiz-option:hover:not(:disabled) {
+ transform: var(--pop-scale);
+ border-color: var(--primary);
+ }
+ .quiz-option.is-correct {
+ background: var(--positive-container);
+ border-color: var(--positive);
+ color: var(--on-positive-container);
+ }
+ .quiz-option.is-incorrect {
+ background: var(--error-container);
+ border-color: var(--error);
+ color: var(--on-error-container);
+ }
+
+ .certificate-box {
+ background: var(--surface-container-low);
+ border-radius: var(--rounded-lg);
+ box-shadow: var(--shadow-pink-deep);
+ padding: var(--space-xl);
+ display: grid;
+ grid-template-columns: auto minmax(0, 1fr);
+ gap: var(--space-lg);
+ align-items: center;
+ }
+
+ .footer-note {
+ padding: var(--space-lg);
+ border-radius: var(--rounded);
+ background: var(--surface-container);
+ color: var(--on-surface-variant);
+ font-size: var(--label-size);
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ align-items: center;
+ gap: var(--space-md);
+ }
+
+ /* Scroll animation reveal */
+ .reveal-section {
+ opacity: 0;
+ transform: translateY(16px);
+ transition: opacity var(--dur-long) var(--ease-out),
+ transform var(--dur-long) var(--ease-out);
+ }
+ .reveal-section.is-visible {
+ opacity: 1;
+ transform: translateY(0);
+ }
+
+ /* Container & Mobile Responsive */
+ .card-wrapper { container-type: inline-size; }
+ @container (max-width: 520px) {
+ .fusion-plate {
+ grid-template-columns: 1fr;
+ text-align: left;
+ }
+ }
+
+ @media (max-width: 820px) {
+ .hero-panel,
+ .split-lab,
+ .occasion-panel,
+ .survey-grid,
+ .certificate-box {
+ grid-template-columns: 1fr;
+ }
+ .stamp-row {
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+ }
+
+ @media (max-width: 640px) {
+ .page-grid {
+ padding: var(--space-md);
+ gap: var(--space-xl);
+ }
+ .hero-panel {
+ padding: var(--space-lg);
+ }
+ .match-columns {
+ grid-template-columns: 1fr;
+ }
+ .stamp-row {
+ grid-template-columns: 1fr;
+ }
+ }
+
+ @media (prefers-reduced-motion: reduce) {
+ *, *::before, *::after {
+ animation-duration: 0.01ms !important;
+ transition-duration: 0.01ms !important;
+ scroll-behavior: auto !important;
+ }
+ }
+ </style>
+</head>
+<body>
+ <div class="page-grid">
+
+ <!-- HERO HEADER -->
+ <header class="hero-panel">
+ <div>
+ <span class="kicker">
+ <i data-lucide="compass" aria-hidden="true"></i>
+ 國小四年級社會科・翰林版四上第四單元
+ </span>
+ <h1 class="display">家鄉的<em>多元</em>文化</h1>
+ <p class="lede">
+ 在我們的家鄉，生活著原住民族、閩南、客家與來自世界各地的新住民朋友。一起透過飲食味道、傳統與現代服飾、多語問候圖卡和名字裡的故事，認識彼此、欣賞多元文化如何交會創新！
+ </p>
+ <nav class="nav-pills" aria-label="單元快速導覽">
+ <a href="#unit-food" class="btn btn-primary">
+ <i data-lucide="utensils" aria-hidden="true"></i>
+ 飲食融合
+ </a>
+ <a href="#unit-clothing" class="btn btn-secondary">
+ <i data-lucide="shirt" aria-hidden="true"></i>
+ 服飾特色
+ </a>
+ <a href="#unit-language" class="btn btn-soft">
+ <i data-lucide="message-circle" aria-hidden="true"></i>
+ 多語圖卡
+ </a>
+ <a href="#unit-names" class="btn btn-soft">
+ <i data-lucide="id-card" aria-hidden="true"></i>
+ 姓名故事
+ </a>
+ <a href="#unit-quiz" class="btn btn-soft">
+ <i data-lucide="award" aria-hidden="true"></i>
+ 闖關測驗
+ </a>
+ </nav>
+ </div>
+
+ <div class="hero-art">
+ <!-- Custom Multicultural Homelands Vector Illustration -->
+ <svg viewBox="0 0 320 220" width="100%" height="200" role="img" aria-label="多元文化共榮插畫：山海、家屋、米食與對話氣泡">
+ <rect x="8" y="8" width="304" height="204" rx="24" fill="var(--surface-container-low)"/>
+ <!-- Sun & Mountain (Hometown landscape) -->
+ <circle cx="246" cy="56" r="24" fill="var(--tangerine-container)"/>
+ <circle cx="246" cy="56" r="14" fill="var(--data-4)"/>
+ <path d="M24 166 L94 86 L152 142 L208 76 L296 166 Z" fill="var(--tertiary-container)"/>
+ <path d="M24 166 L94 86 L138 166 Z" fill="var(--tertiary)" opacity="0.35"/>
+ <!-- Diamond traditional textile motif -->
+ <polygon points="160,34 176,50 160,66 144,50" fill="var(--primary)"/>
+ <polygon points="160,42 168,50 160,58 152,50" fill="var(--surface-container-low)"/>
+ <!-- Bowl of mixed grains & food -->
+ <path d="M58 156 C58 188 122 188 122 156 Z" fill="var(--secondary)"/>
+ <rect x="74" y="180" width="32" height="8" rx="4" fill="var(--on-surface)"/>
+ <circle cx="76" cy="148" r="9" fill="var(--primary-container)"/>
+ <circle cx="92" cy="144" r="10" fill="var(--tangerine-container)"/>
+ <circle cx="106" cy="149" r="8" fill="var(--positive-container)"/>
+ <!-- Speech bubbles representing multilingual greeting -->
+ <rect x="150" y="108" width="128" height="44" rx="22" fill="var(--primary)"/>
+ <circle cx="182" cy="130" r="5" fill="var(--on-primary)"/>
+ <circle cx="214" cy="130" r="5" fill="var(--on-primary)"/>
+ <circle cx="246" cy="130" r="5" fill="var(--on-primary)"/>
+ <rect x="172" y="160" width="96" height="32" rx="16" fill="var(--secondary-container)"/>
+ <line x1="192" y1="176" x2="248" y2="176" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+ </svg>
+ <span class="tag is-pink">
+ <i data-lucide="sparkles" aria-hidden="true"></i>
+ 圖文互動・免語音也能輕鬆學
+ </span>
+ </div>
+ </header>
+
+ <!-- PASSPORT PROGRESS BAR -->
+ <section class="passport-card" aria-label="多元文化探索護照">
+ <div class="passport-head">
+ <div>
+ <h2 class="subhead">我的多元文化探索護照</h2>
+ <p id="passport-status-text" style="margin: 4px 0 0 0; color: var(--on-surface-variant); font-size: var(--label-size);">
+ 完成下面 5 個單元的互動任務，就能收集全部探索印章！
+ </p>
+ </div>
+ <div style="display: flex; align-items: center; gap: var(--space-sm);">
+ <strong id="passport-count" style="font-size: 1.25rem; color: var(--primary); font-variant-numeric: tabular-nums;">0 / 5</strong>
+ <button type="button" class="btn btn-quiet" id="reset-all-btn" onclick="handleResetAll(this)">
+ <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+ 重置進度
+ </button>
+ </div>
+ </div>
+
+ <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="passport-progressbar">
+ <div class="progress-fill" id="passport-progress-fill"></div>
+ </div>
+
+ <div class="stamp-row">
+ <a href="#unit-food" class="stamp-pill" id="stamp-food">
+ <i data-lucide="circle-dashed" aria-hidden="true"></i>
+ <span>1. 飲食配對</span>
+ </a>
+ <a href="#unit-clothing" class="stamp-pill" id="stamp-clothing">
+ <i data-lucide="circle-dashed" aria-hidden="true"></i>
+ <span>2. 服飾翻翻卡</span>
+ </a>
+ <a href="#unit-language" class="stamp-pill" id="stamp-language">
+ <i data-lucide="circle-dashed" aria-hidden="true"></i>
+ <span>3. 多語配對</span>
+ </a>
+ <a href="#unit-names" class="stamp-pill" id="stamp-names">
+ <i data-lucide="circle-dashed" aria-hidden="true"></i>
+ <span>4. 姓名小調查</span>
+ </a>
+ <a href="#unit-quiz" class="stamp-pill" id="stamp-quiz">
+ <i data-lucide="circle-dashed" aria-hidden="true"></i>
+ <span>5. 闖關測驗</span>
+ </a>
+ </div>
+ </section>
+
+ <!-- UNIT 1: FOOD CULTURE -->
+ <section id="unit-food" class="unit-section reveal-section">
+ <div class="unit-header">
+ <span class="kicker">
+ <i data-lucide="utensils-crossed" aria-hidden="true"></i>
+ 第一站・多樣的飲食文化
+ </span>
+ <h2 class="section-title">家鄉餐桌的<em>融合</em>與創新</h2>
+ <p class="lede">
+ 每個族群依照居住環境與生活習慣，發展出獨特的食材與調味方式。當不同文化在家鄉相遇，美味也跟著大變身！
+ </p>
+ </div>
+
+ <!-- 4 Ethnic Food Highlights -->
+ <div class="card-grid">
+ <article class="card">
+ <span class="tag is-pink">原住民族</span>
+ <h3 class="subhead" style="margin-top: var(--space-sm);">山林香料與小米智慧</h3>
+ <p style="margin: var(--space-xs) 0 0 0; color: var(--on-surface-variant);">
+ 善用山林裡的天然食材，如帶著檸檬清香的<strong>馬告（山胡椒）</strong>、刺蔥與耐旱的<strong>小米、樹豆</strong>，製作出竹筒飯、吉拿富（小米粽）與石板烤肉。
+ </p>
+ </article>
+
+ <article class="card">
+ <span class="tag">閩南（河洛）族群</span>
+ <h3 class="subhead" style="margin-top: var(--space-sm);">稻米海產與油蔥鹹香</h3>
+ <p style="margin: var(--space-xs) 0 0 0; color: var(--on-surface-variant);">
+ 多住在平原與沿海地帶，以<strong>稻米</strong>為主食並搭配豐富海鮮。愛用紅蔥頭爆香與醬油燉煮，經典小吃有滷肉飯、蚵仔煎、碗粿與清明節潤餅。
+ </p>
+ </article>
+
+ <article class="card">
+ <span class="tag is-pink">客家族群</span>
+ <h3 class="subhead" style="margin-top: var(--space-sm);">醃漬保存與開胃酸香</h3>
+ <p style="margin: var(--space-xs) 0 0 0; color: var(--on-surface-variant);">
+ 早期多居住在丘陵山區、勞動量大，發展出耐保存的<strong>福菜、梅干菜、菜脯</strong>，以及用酸柑橘製成的<strong>客家桔醬</strong>，代表菜有客家小炒、梅干扣肉、粄條。
+ </p>
+ </article>
+
+ <article class="card">
+ <span class="tag">新住民家鄉味</span>
+ <h3 class="subhead" style="margin-top: var(--space-sm);">熱帶香草與濃郁醬料</h3>
+ <p style="margin: var(--space-xs) 0 0 0; color: var(--on-surface-variant);">
+ 來自越南、印尼、泰國等地的朋友帶來<strong>香茅、檸檬葉、魚露、椰奶與薑黃</strong>，讓家鄉街頭多了越南河粉、生春捲、印尼薑黃飯與巴東牛肉等異國美食。
+ </p>
+ </article>
+ </div>
+
+ <!-- Fusion Cases -->
+ <div class="card card-sky">
+ <h3 class="subhead">當文化相遇：跨文化美食創新實例</h3>
+ <div class="card-grid" style="margin-top: var(--space-md);">
+ <div style="background: var(--surface-container); padding: var(--space-md); border-radius: var(--rounded);">
+ <strong style="color: var(--primary);">1. 在地米漢堡</strong>
+ <p style="margin: 6px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 將西方速食漢堡的麵包，改成臺灣人熟悉的香甜蓬萊米飯壓成米餅，再夾入臺式三杯雞或燒肉，既方便拿取又有米飯香！
+ </p>
+ </div>
+ <div style="background: var(--surface-container); padding: var(--space-md); border-radius: var(--rounded);">
+ <strong style="color: var(--secondary);">2. 家鄉風味披薩</strong>
+ <p style="margin: 6px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 義大利披薩餅皮遇上臺灣地方特色：放上客家鹹豬肉與青蒜、宜蘭鴨賞，或灑上原住民馬告調味的烤雞，成為獨一無二的融合披薩。
+ </p>
+ </div>
+ <div style="background: var(--surface-container); padding: var(--space-md); border-radius: var(--rounded);">
+ <strong style="color: var(--primary);">3. 在地食材新住民料理</strong>
+ <p style="margin: 6px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 新住民朋友運用臺灣當季的清脆小黃瓜、高麗菜絲包進越南生春捲，或選用臺灣在來米製作改良河粉，讓異國風味更貼近在地口味。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Interactive Lab 1A & 1B -->
+ <div class="split-lab">
+ <!-- 1A: Ingredient Matching -->
+ <div class="card">
+ <div style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm); flex-wrap: wrap;">
+ <h3 class="subhead">互動一：文化食材配對挑戰</h3>
+ <span class="tag is-positive" id="food-match-score">已配對 0 / 4</span>
+ </div>
+ <p style="margin: 6px 0 var(--space-md) 0; color: var(--on-surface-variant); font-size: var(--label-size);">
+ 先點左邊的「特色食材」，再點右邊對應的「族群與代表美食」，全部配對完成即可蓋章！
+ </p>
+
+ <div class="match-columns">
+ <div class="match-col" id="food-left-col" aria-label="特色食材列表"></div>
+ <div class="match-col" id="food-right-col" aria-label="族群美食列表"></div>
+ </div>
+
+ <div id="food-match-feedback" class="feedback-banner is-info" aria-live="polite">
+ <i data-lucide="lightbulb" aria-hidden="true"></i>
+ <span>請先點選左邊任一種食材開始配對。</span>
+ </div>
+ </div>
+
+ <!-- 1B: Creative Fusion Platter Builder -->
+ <div class="card card-grape card-wrapper">
+ <h3 class="subhead">互動二：創意融合美食拼盤</h3>
+ <p style="margin: 6px 0 var(--space-md) 0; color: var(--on-surface-variant); font-size: var(--label-size);">
+ 挑選一種「基底主食」搭配一種「特色配料」，設計一道跨文化創意料理！
+ </p>
+
+ <div class="fusion-stage">
+ <div>
+ <div class="form-label" style="margin-bottom: 6px;">步驟 1：選擇基底主食</div>
+ <div class="choice-row" id="fusion-base-choices"></div>
+ </div>
+
+ <div>
+ <div class="form-label" style="margin-bottom: 6px;">步驟 2：選擇靈魂配料</div>
+ <div class="choice-row" id="fusion-topping-choices"></div>
+ </div>
+
+ <div class="fusion-plate" id="fusion-result-box">
+ <div id="fusion-svg-wrap" style="width: 112px; height: 112px; display: flex; align-items: center; justify-content: center;"></div>
+ <div>
+ <span class="tag is-pink" id="fusion-tags">米食 × 山林香料</span>
+ <h4 class="subhead" id="fusion-dish-name" style="margin-top: 6px;">馬告烤豬米漢堡</h4>
+ <p id="fusion-dish-desc" style="margin: 4px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 外層是用臺灣蓬萊米壓製的香煎米餅，夾入帶著檸檬柑橘香氣的馬告烤肉片，中西與原民風味一次滿足！
+ </p>
+ </div>
+ </div>
+
+ <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm);">
+ <button type="button" class="btn btn-secondary" onclick="saveFusionDish()">
+ <i data-lucide="bookmark-plus" aria-hidden="true"></i>
+ 收藏這道創意料理
+ </button>
+ <span id="fusion-save-msg" style="font-size: var(--label-size); color: var(--secondary); font-weight: 700;"></span>
+ </div>
+
+ <div>
+ <div class="form-label">我的創意美食收藏單：</div>
+ <div class="saved-dishes-list" id="saved-dishes-list">
+ <span style="font-size: var(--label-size); color: var(--on-surface-variant);">尚未收藏料理，試著組合看看吧！</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- UNIT 2: CLOTHING -->
+ <section id="unit-clothing" class="unit-section reveal-section">
+ <div class="unit-header">
+ <span class="kicker is-grape">
+ <i data-lucide="shirt" aria-hidden="true"></i>
+ 第二站・各族群服飾特色
+ </span>
+ <h2 class="section-title">穿在身上的<em>文化</em>與創新</h2>
+ <p class="lede">
+ 服飾不只是保暖與遮蔽身體的工具，布料的材質、染織技術與圖騰紋路，都藏著族群的生活環境、智慧與信仰。
+ </p>
+ </div>
+
+ <!-- Flip Cards -->
+ <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm);">
+ <p style="margin: 0; font-weight: 700; color: var(--secondary);">
+ <i data-lucide="mouse-pointer-click" aria-hidden="true" style="vertical-align: middle;"></i>
+ 點一點卡片，翻看材質故事與現代穿搭創新！（已翻看 <span id="flip-count">0</span> / 4 張）
+ </p>
+ </div>
+
+ <div class="flip-grid" id="clothing-flip-grid"></div>
+
+ <!-- Occasion Switcher -->
+ <div class="card card-sky occasion-panel">
+ <div>
+ <span class="tag">日常與節慶探索</span>
+ <h3 class="subhead" style="margin-top: var(--space-sm);">不同場合怎麼穿？</h3>
+ <p style="margin: 6px 0 var(--space-md) 0; color: var(--on-surface-variant); font-size: var(--label-size);">
+ 切換生活情境，看看傳統服飾如何保留核心精神，同時配合現代生活變得更方便實穿！
+ </p>
+ <div class="choice-row" id="occasion-buttons">
+ <button type="button" class="chip is-active" aria-pressed="true" onclick="selectOccasion('daily')">日常校園與工作</button>
+ <button type="button" class="chip" aria-pressed="false" onclick="selectOccasion('festival')">歲時祭儀與慶典</button>
+ <button type="button" class="chip" aria-pressed="false" onclick="selectOccasion('modern')">現代改良新設計</button>
+ </div>
+ </div>
+
+ <div id="occasion-detail-box" style="background: var(--surface-container); border-radius: var(--rounded); padding: var(--space-lg);">
+ <h4 class="subhead" id="occasion-title">日常校園與工作：舒適、便利又保有認同</h4>
+ <p id="occasion-desc" style="margin: var(--space-xs) 0 0 0; color: var(--on-surface-variant);">
+ 平日上學或上班時，大家常穿輕便的現代服裝，但會在細節裡展現文化特色：例如把原住民族圖騰印在帆布書包與運動服上、穿上簡潔剪裁的藍染棉質襯衫，或選擇透氣好清洗的希賈布頭巾，兼顧信仰與活動便利。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- UNIT 3: MULTILINGUAL VISUAL INTERACTION (NO AUDIO) -->
+ <section id="unit-language" class="unit-section reveal-section">
+ <div class="unit-header">
+ <span class="kicker is-sky">
+ <i data-lucide="languages" aria-hidden="true"></i>
+ 第三站・生活中的多元語言與溝通（純圖文互動）
+ </span>
+ <h2 class="section-title">用尊重的心，認識多元<em>母語</em></h2>
+ <p class="lede">
+ 每一種語言都有獨特的聲調與祝福含意。透過文字、羅馬拼音與圖解小撇步，不必依賴機器發音，我們也能認識臺灣台語、臺灣客語、原住民族語及新住民語言！
+ </p>
+ </div>
+
+ <!-- Scenario Phrase Cards -->
+ <div class="card">
+ <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+ <div>
+ <h3 class="subhead">互動一：日常情境多語對照圖卡</h3>
+ <p style="margin: 4px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 選一個生活情境，比較 5 種語言的文字寫法、拼音輔助與背後文化小故事。
+ </p>
+ </div>
+ <div class="choice-row" id="lang-situation-tabs"></div>
+ </div>
+
+ <div class="lang-card-grid" id="lang-cards-container"></div>
+ </div>
+
+ <!-- Language Matching Game -->
+ <div class="card card-grape">
+ <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm);">
+ <div>
+ <h3 class="subhead">互動二：母語問候圖文配對遊戲</h3>
+ <p style="margin: 4px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 先點選左邊的「多語短句」，再點選右邊正確的「語言族群與中文意思」，全部答對就能獲得本章印章！
+ </p>
+ </div>
+ <span class="tag is-positive" id="lang-match-score">已配對 0 / 5</span>
+ </div>
+
+ <div class="match-columns" style="margin-top: var(--space-md);">
+ <div class="match-col" id="lang-left-col" aria-label="多語問候卡片"></div>
+ <div class="match-col" id="lang-right-col" aria-label="語言族群與意思"></div>
+ </div>
+
+ <div id="lang-match-feedback" class="feedback-banner is-info" aria-live="polite">
+ <i data-lucide="sparkles" aria-hidden="true"></i>
+ <span>點選左邊的問候語開始配對吧！可以參考上面的圖文對照卡喔。</span>
+ </div>
+ </div>
+
+ <!-- Public Space Friendly Signage -->
+ <div class="public-sign-board">
+ <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-md);">
+ <div>
+ <h3 class="subhead">公共場所友善溝通：多語指示牌</h3>
+ <p style="margin: 4px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 在車站、醫院或圖書館看見多種語言標示，代表每個人都能安心使用公共空間，這就是「語言平等」。點選不同標示看看：
+ </p>
+ </div>
+ <div class="choice-row" id="public-sign-tabs">
+ <button type="button" class="chip is-grape is-active" aria-pressed="true" onclick="selectPublicSign('library')">社區圖書館入口</button>
+ <button type="button" class="chip is-grape" aria-pressed="false" onclick="selectPublicSign('station')">火車站服務台</button>
+ <button type="button" class="chip is-grape" aria-pressed="false" onclick="selectPublicSign('hospital')">醫院友善看診</button>
+ </div>
+ </div>
+
+ <div class="sign-grid" id="public-sign-grid"></div>
+ </div>
+ </section>
+
+ <!-- UNIT 4: NAMING CUSTOMS & MY NAME STORY -->
+ <section id="unit-names" class="unit-section reveal-section">
+ <div class="unit-header">
+ <span class="kicker is-tangerine">
+ <i data-lucide="sparkles" aria-hidden="true"></i>
+ 第四站・命名方式與姓名故事探究
+ </span>
+ <h2 class="section-title">每個名字，都是一封家人的<em>祝福</em></h2>
+ <p class="lede">
+ 不同族群取名字的方式各具特色，有的重視家族傳承、有的連結自然山海，有的則寫滿長輩的期待。點開同學的姓名小卡，再來探索你自己的名字故事！
+ </p>
+ </div>
+
+ <!-- Classmate Name Cards -->
+ <div class="student-name-grid" id="student-names-grid"></div>
+
+ <!-- My Name Story Survey -->
+ <div class="survey-grid">
+ <form class="card" id="name-survey-form" onsubmit="submitNameSurvey(event)">
+ <h3 class="subhead">互動探索：我的姓名故事小調查</h3>
+ <p style="margin: 6px 0 var(--space-md) 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 想一想自己的名字是誰取的？有什麼特別的涵義？填寫後右側會產生一張你的「姓名文化名片」！
+ </p>
+
+ <div class="form-field">
+ <label class="form-label" for="survey-name">1. 我的姓名或小名</label>
+ <input type="text" id="survey-name" class="pill-input" maxlength="24" placeholder="例如：林晴安 或 Tali・Yumin">
+ </div>
+
+ <div class="form-field">
+ <label class="form-label" for="survey-origin">2. 我名字的命名方式比較接近哪一種？</label>
+ <select id="survey-origin" class="pill-select">
+ <option value="傳承姓氏與長輩期待">漢人傳統：傳承父姓或母姓＋長輩的期待祝福</option>
+ <option value="族譜輩分取名">漢人傳統：依照家族族譜的「輩分字」取名</option>
+ <option value="原住民族傳統命名">原住民族傳統：親子連名、家屋名、自然取名或長輩賜名</option>
+ <option value="跨文化雙語祝福">新住民／跨文化家庭：融合不同語言的美好意思</option>
+ <option value="出生節氣或特別紀念">紀念出生時的季節、天氣或難忘事件</option>
+ </select>
+ </div>
+
+ <div class="form-field">
+ <label class="form-label" for="survey-meaning">3. 名字背後的意義或故事</label>
+ <textarea id="survey-meaning" class="pill-textarea" maxlength="140" placeholder="例如：爸爸希望我像晴天一樣開朗、平安長大；或是名字裡有外公的名字..."></textarea>
+ </div>
+
+ <div class="form-field">
+ <label class="form-label" for="survey-favorite">4. 認識不同族群的命名方式後，我最佩服或好奇的是：</label>
+ <select id="survey-favorite" class="pill-select">
+ <option value="親子連名讓人一聽就知道家族連結">親子連名：名字裡同時有自己和父母的名字，很有連結感！</option>
+ <option value="親隨子名展現對孩子的疼愛">達悟族親隨子名：父母以孩子的名字為榮，好溫暖！</option>
+ <option value="原住民族恢復傳統名字的權利">法律保障原住民族可以登記傳統名字，很棒！</option>
+ <option value="從父姓或從母姓都可以自由約定">現在可以自由約定從父姓或從母姓，很公平！</option>
+ <option value="印尼部分傳統只取單名沒有姓氏">印尼部分文化只取一個名字，祝福卻一樣滿滿！</option>
+ </select>
+ </div>
+
+ <div id="survey-message" style="font-size: var(--label-size); font-weight: 700; min-height: 20px; margin-bottom: var(--space-sm);"></div>
+
+ <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+ <button type="submit" class="btn btn-primary">
+ <i data-lucide="check-circle" aria-hidden="true"></i>
+ 完成姓名調查並產生名片
+ </button>
+ <button type="button" class="btn btn-soft" onclick="exportNameCard()">
+ <i data-lucide="download" aria-hidden="true"></i>
+ 匯出我的學習紀錄
+ </button>
+ </div>
+ </form>
+
+ <!-- Preview Card -->
+ <div class="name-badge-preview" id="name-badge-preview">
+ <div style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm);">
+ <span class="tag is-pink">專屬姓名文化名片</span>
+ <span id="badge-status-tag" class="tag">等待填寫</span>
+ </div>
+ <div style="padding: var(--space-md); background: var(--surface-container); border-radius: var(--rounded);">
+ <div style="font-size: var(--label-size); color: var(--on-surface-variant);">我的名字</div>
+ <div id="preview-name" style="font-size: 1.75rem; font-weight: 900; color: var(--primary); margin-top: 2px;">尚未填寫姓名</div>
+ <div id="preview-origin" style="font-size: var(--label-size); font-weight: 700; color: var(--secondary); margin-top: 4px;">請在左側完成你的姓名小調查</div>
+ </div>
+ <div>
+ <div style="font-size: var(--label-size); font-weight: 700; color: var(--on-surface);">我的命名故事：</div>
+ <p id="preview-meaning" style="margin: 4px 0 0 0; color: var(--on-surface-variant);">
+ 每一個名字都有愛與期待。試著問問家人，把你的故事寫下來吧！
+ </p>
+ </div>
+ <div style="padding-top: var(--space-sm); border-top: 2px dashed var(--outline-variant);">
+ <div style="font-size: var(--label-size); font-weight: 700; color: var(--on-surface);">我的多元文化發現：</div>
+ <p id="preview-favorite" style="margin: 4px 0 0 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ 尊重每個人的名字、唸對朋友的名字，就是最棒的友善行動！
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- UNIT 5: QUIZ & SUMMARY -->
+ <section id="unit-quiz" class="unit-section reveal-section">
+ <div class="unit-header">
+ <span class="kicker">
+ <i data-lucide="trophy" aria-hidden="true"></i>
+ 第五站・單元總結與闖關小測驗
+ </span>
+ <h2 class="section-title">多元文化小達人<em>大挑戰</em></h2>
+ <p class="lede">
+ 回答 5 道生活情境題，檢驗你今天學到的飲食創新、服飾智慧、多語尊重與姓名文化！
+ </p>
+ </div>
+
+ <div class="card quiz-container">
+ <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-sm);">
+ <span class="tag is-pink" id="quiz-progress-label">第 1 題 / 共 5 題</span>
+ <span class="tag is-positive" id="quiz-score-label">目前答對：0 題</span>
+ </div>
+
+ <h3 class="subhead" id="quiz-question-text">題目載入中…</h3>
+
+ <div class="quiz-option-list" id="quiz-options-list"></div>
+
+ <div id="quiz-feedback" class="feedback-banner is-info" style="display: none;" aria-live="polite"></div>
+
+ <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-sm);">
+ <div style="display: flex; gap: var(--space-sm);">
+ <button type="button" class="btn btn-soft" id="quiz-prev-btn" onclick="prevQuizQuestion()">上一題</button>
+ <button type="button" class="btn btn-primary" id="quiz-next-btn" onclick="nextQuizQuestion()">下一題</button>
+ </div>
+ <button type="button" class="btn btn-quiet" onclick="restartQuiz()">重新挑戰測驗</button>
+ </div>
+ </div>
+
+ <!-- Summary & Certificate -->
+ <div class="certificate-box" id="summary-certificate">
+ <svg viewBox="0 0 120 120" width="96" height="96" role="img" aria-label="多元文化共榮徽章">
+ <circle cx="60" cy="60" r="54" fill="var(--primary-container)"/>
+ <circle cx="60" cy="60" r="42" fill="var(--surface-container-low)"/>
+ <path d="M60 28 L69 47 L90 50 L74 64 L78 85 L60 75 L42 85 L46 64 L30 50 L51 47 Z" fill="var(--primary)"/>
+ <circle cx="60" cy="59" r="9" fill="var(--tertiary)"/>
+ </svg>
+ <div>
+ <span class="tag is-pink">單元核心總結</span>
+ <h3 class="subhead" id="cert-title" style="margin-top: 6px;">欣賞差異、互相學習，讓家鄉更精彩！</h3>
+ <p id="cert-desc" style="margin: 6px 0 0 0; color: var(--on-surface-variant);">
+ 無論是飯桌上的跨文化創意料理、結合現代設計的傳統服飾、公共場所的多語友善標示，還是寫滿祝福的名字，都告訴我們：<strong>「了解、尊重、欣賞與交流」</strong>，是讓家鄉多元文化生生不息的重要力量！
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <footer class="footer-note">
+ <span>資料脈絡參考：國民小學社會四年級上學期（翰林版第四單元〈家鄉的多元文化〉）與臺灣本土語言及新住民文化教材。</span>
+ <span>互動學習進度會自動儲存在你的學習空間中。</span>
+ </footer>
+ </div>
+
+ <api-shim></api-shim>
+ <script>
+ // ==========================================
+ // DATA DEFINITIONS (using backtick template literals)
+ // ==========================================
+ const foodMatchPairs = [
+ {
+ id: `makau`,
+ leftLabel: `馬告（山胡椒）與小米`,
+ rightLabel: `原住民族・竹筒飯與吉拿富`,
+ explanation: `馬告是生長在山林的天然香料，有淡淡檸檬香氣；小米耐旱好保存，常做成吉拿富（小米粽）分享給親友！`
+ },
+ {
+ id: `kumquat`,
+ leftLabel: `客家桔醬與梅干菜`,
+ rightLabel: `客家族群・客家小炒與梅干扣肉`,
+ explanation: `客家族群善於把食材醃漬曬乾保存，方便山區農忙時補充體力與鹽分，酸香的桔醬也常拿來沾肉類解膩。`
+ },
+ {
+ id: `shallot`,
+ leftLabel: `紅蔥頭酥與海產`,
+ rightLabel: `閩南族群・滷肉飯與蚵仔煎`,
+ explanation: `閩南族群多在平原與海岸生活，結合稻米、海產與紅蔥頭爆香，創造出滷肉飯、蚵仔煎與碗粿等家常美味。`
+ },
+ {
+ id: `lemongrass`,
+ leftLabel: `香茅、魚露與薑黃`,
+ rightLabel: `新住民料理・越南生春捲與印尼薑黃飯`,
+ explanation: `來自東南亞的新住民把香茅、魚露、椰奶與薑黃等香料帶入家鄉，豐富了臺灣街頭的異國料理風景。`
+ }
+ ];
+
+ const fusionBases = [
+ { id: `rice`, label: `臺灣蓬萊米餅`, tag: `在地米食` },
+ { id: `pizza`, label: `義式薄脆披薩皮`, tag: `義式餅皮` },
+ { id: `springroll`, label: `越南透明米紙`, tag: `越式米紙` }
+ ];
+
+ const fusionToppings = [
+ { id: `makau_pork`, label: `原民馬告烤山豬肉`, tag: `山林香料` },
+ { id: `hakka_pork`, label: `客家鹹豬肉配青蒜`, tag: `客家鹹香` },
+ { id: `taiwan_chicken`, label: `閩南九層塔三杯雞`, tag: `臺式熱炒` },
+ { id: `thai_shrimp`, label: `東南亞香茅檸檬鮮蝦`, tag: `南洋清香` }
+ ];
+
+ const fusionRecipes = {
+ 'rice+makau_pork': {
+ name: `馬告烤肉米漢堡`,
+ desc: `用香煎臺灣蓬萊米餅夾住帶有檸檬清香的馬告烤肉片，兼顧西方漢堡的便利吃法與原住民族山林風味！`
+ },
+ 'rice+hakka_pork': {
+ name: `客家鹹豬肉米漢堡`,
+ desc: `米飯的微甜剛好中和客家鹹豬肉的濃郁鹹香，加上爽脆青蒜絲，展現稻米與客家醃漬智慧的新吃法。`
+ },
+ 'rice+taiwan_chicken': {
+ name: `臺式三杯雞米漢堡`,
+ desc: `經典九層塔三杯雞不再只是配白飯的熱炒，夾進米餅裡就能帶著走，把傳統家常菜變成年輕世代的最愛！`
+ },
+ 'rice+thai_shrimp': {
+ name: `南洋香茅鮮蝦米堡`,
+ desc: `臺灣好米搭配酸辣清爽的香茅檸檬蝦，是臺灣稻米文化與東南亞香料文化交融的美味代表。`
+ },
+ 'pizza+makau_pork': {
+ name: `馬告風味部落披薩`,
+ desc: `義大利起司餅皮放上馬告烤肉與洋蔥，烤過之後檸檬胡椒香氣四溢，是極具特色的中西合併美食。`
+ },
+ 'pizza+hakka_pork': {
+ name: `客家鹹豬肉青蒜披薩`,
+ desc: `把西方披薩常見的培根火腿，換成臺灣道地的客家鹹豬肉與翠綠蒜苗，連長輩都愛吃的跨界披薩！`
+ },
+ 'pizza+taiwan_chicken': {
+ name: `九層塔三杯雞披薩`,
+ desc: `義式羅勒和臺灣九層塔本是親戚！濃郁醬香的三杯雞在起司烘烤下，成為臺灣披薩店的人氣創新口味。`
+ },
+ 'pizza+thai_shrimp': {
+ name: `南洋香茅蝦仁披薩`,
+ desc: `義式餅皮刷上微酸甜的南洋風味醬汁，放上鮮蝦與檸檬葉絲，吃起來清爽不膩口。`
+ },
+ 'springroll+makau_pork': {
+ name: `山林馬告鮮蔬生春捲`,
+ desc: `透明的越南米紙捲進臺灣生菜與馬告烤肉，清爽不油膩，展現東南亞與原住民族的巧妙合作。`
+ },
+ 'springroll+hakka_pork': {
+ name: `客家鹹豬肉清爽春捲`,
+ desc: `越南生春捲皮包入臺灣小黃瓜絲與香烤鹹豬肉，像極了把客家風味裝進清新的南洋外衣裡！`
+ },
+ 'springroll+taiwan_chicken': {
+ name: `三杯雞鮮蔬米紙捲`,
+ desc: `將臺灣在地高麗菜絲、小黃瓜與九層塔三杯雞一起捲進越南米紙，口感層次豐富又健康。`
+ },
+ 'springroll+thai_shrimp': {
+ name: `在地時蔬鮮蝦生春捲`,
+ desc: `新住民朋友運用臺灣當季的清甜蔬果取代部分進口蔬菜，包出既保留家鄉味又符合在地新鮮美味的春捲！`
+ }
+ };
+
+ const clothingCards = [
+ {
+ id: `indigenous`,
+ group: `原住民族服飾`,
+ question: `織布上的「菱形紋」代表什麼特別的意義呢？`,
+ frontDetail: `點我翻開看材質、圖騰與現代穿搭！`,
+ material: `早期多以苧麻手織，並搭配琉璃珠、貝殼與鮮豔毛線刺繡裝飾。`,
+ meaning: `例如泰雅族的紅白「菱形紋」象徵「祖靈的眼睛」，守護族人；排灣族常出現百步蛇與太陽圖騰，代表祖靈與家族地位。`,
+ modern: `現在設計師會把菱形紋或圖騰融入連帽外套、帆布包與球鞋，讓傳統美學走進校園日常！`,
+ svgType: `indigenous`
+ },
+ {
+ id: `hakka`,
+ group: `客家族群・藍衫（大襟衫）`,
+ question: `為什麼傳統客家服飾常使用「靛藍色」，袖口還能反摺呢？`,
+ frontDetail: `點我翻開看藍衫的實用巧思！`,
+ material: `用耐穿的棉麻布料，搭配「大菁」植物染成深沉耐髒的靛藍色。`,
+ meaning: `寬鬆剪裁方便下田工作；反摺起來的寬袖口可以當作臨時口袋，用來放手帕或零錢，展現客家人勤儉務實的精神！`,
+ modern: `現代改良成修身的藍染襯衫、洋裝與文創絲巾，既有質感又適合平時上班上課穿著。`,
+ svgType: `hakka`
+ },
+ {
+ id: `aodai_batik`,
+ group: `新住民服飾・奧黛與蠟染`,
+ question: `越南「奧黛」與印尼「蠟染（Batik）」分別在什麼時候穿呢？`,
+ frontDetail: `點我翻開看東南亞服飾文化！`,
+ material: `越南奧黛常用柔軟絲綢或棉麻；印尼蠟染則是在棉布或絲綢上用蜂蠟畫出花紋後染色。`,
+ meaning: `越南奧黛剪裁合身、兩側開衩配長褲，常在春節、婚禮穿著；印尼蠟染圖案象徵自然與祝福，在印尼連正式上班日都會穿。`,
+ modern: `現在也會製作短袖改良版奧黛或蠟染花色T恤、口罩與領結，讓節慶之外也能輕鬆穿搭。`,
+ svgType: `aodai`
+ },
+ {
+ id: `hijab`,
+ group: `宗教信仰服裝・希賈布（Hijab）`,
+ question: `穆斯林女性戴的頭巾「希賈布」，在臺灣夏天如何兼顧信仰與舒適？`,
+ frontDetail: `點我翻開看信仰與氣候調適！`,
+ material: `從傳統厚織布進化到輕薄透氣的雪紡、竹纖維與涼感排汗布料。`,
+ meaning: `希賈布代表伊斯蘭信仰中的端莊、虔誠與自我認同，是許多新住民朋友與移工姊妹日常生活中很重視的穿著。`,
+ modern: `臺灣氣候潮濕炎熱，現在有許多色彩繽紛、免別針一體成型的透氣頭巾，搭配運動服或日常洋裝都很亮眼！`,
+ svgType: `hijab`
+ }
+ ];
+
+ const occasionDetails = {
+ daily: {
+ title: `日常校園與工作：舒適、便利又保有認同`,
+ desc: `平日上學或上班時，大家常穿輕便的現代服裝，但會在細節裡展現文化特色：例如把原住民族圖騰印在帆布書包與運動服上、穿上簡潔剪裁的藍染棉質襯衫，或選擇透氣好清洗的希賈布頭巾，兼顧信仰與活動便利。`
+ },
+ festival: {
+ title: `歲時祭儀與慶典：隆重傳承族群榮耀`,
+ desc: `到了豐年祭、婚禮、開齋節或春節等重要節日，族人會換上最精美的傳統服飾，例如配戴琉璃珠與羽冠的原住民族盛裝、色彩典雅的越南奧黛，或花紋細緻的印尼蠟染服，表達對祖先、神明與親友的最高敬意！`
+ },
+ modern: {
+ title: `現代改良新設計：傳統與時尚大變身`,
+ desc: `服裝設計師將客家藍染變成牛仔風外套、把泰雅族織紋製成潮流運動服、把傳統大襟衫改為立領短版襯衫。改良後的服飾保留了文化符號，穿起來更輕盈，讓年輕世代也愛上穿出自己的文化故事。`
+ }
+ };
+
+ const languageSituations = [
+ {
+ id: `morning`,
+ label: `早安・你好`,
+ cards: [
+ {
+ lang: `臺灣台語`,
+ nativeText: `敖早 / 你好`,
+ roman: `Gâu-tsá / Lí-hó`,
+ tip: `唸起來像「熬早」或「哩賀」，見面親切問早！`,
+ note: `「敖（gâu）」原本有很厲害、勤勞的意思，早起互道「敖早」也是稱讚對方精神好！`
+ },
+ {
+ lang: `臺灣客語（四縣腔）`,
+ nativeText: `早晨 / 你好`,
+ roman: `Zó-sṳ̀n / Ngì-hó`,
+ tip: `早上好叫做「早晨」，「你好」唸起來像「泥好」`,
+ note: `客語保留了許多古漢語的用法，「早晨」就是早安的意思。`
+ },
+ {
+ lang: `原住民族語（阿美語）`,
+ nativeText: `Nga'ay ho`,
+ roman: `Nga-ay ho（阿美語你好）`,
+ tip: `拆解音節：恩阿-愛-齁，「'」代表短促停頓`,
+ note: `在阿美族部落見面時，不論早晚說一聲 Nga'ay ho，代表「願你平安美好」！`
+ },
+ {
+ lang: `越南語`,
+ nativeText: `Xin chào`,
+ roman: `Xin chào（你好）`,
+ tip: `近似唸法「新早」，音調平穩親切`,
+ note: `越南語跟長輩或老師打招呼時，還會在後面加上稱謂（如老師、伯伯）表示禮貌。`
+ },
+ {
+ lang: `印尼語`,
+ nativeText: `Selamat pagi`,
+ roman: `Se-la-mat pa-gi（早安）`,
+ tip: `pagi 是早晨，清晨到早上十一點前都用這句！`,
+ note: `印尼語問候會看太陽位置區分：早上 pagi、中午 siang、傍晚 sore。`
+ }
+ ]
+ },
+ {
+ id: `thanks`,
+ label: `謝謝你`,
+ cards: [
+ {
+ lang: `臺灣台語`,
+ nativeText: `多謝 / 感謝`,
+ roman: `To-siā / Kám-siā`,
+ tip: `常用「多謝（哆謝）」或「感謝（感夏）」表達謝意`,
+ note: `收到別人幫忙或禮物時說一聲多謝，立刻拉近鄰居朋友的距離。`
+ },
+ {
+ lang: `臺灣客語（四縣腔）`,
+ nativeText: `按仔細 / 承蒙你`,
+ roman: `An-zii-se / Sìn-mùng-ngì`,
+ tip: `「按仔細」唸起來像「安子細」，意思是謝謝你費心`,
+ note: `客語的感謝很有溫度，「承蒙你」表示承蒙對方的照顧與幫助。`
+ },
+ {
+ lang: `原住民族語（排灣 / 阿美）`,
+ nativeText: `Maljimalji / Aray`,
+ roman: `Ma-li-ma-li（排灣）/ A-ray（阿美）`,
+ tip: `排灣語「馬里馬里」好記又響亮；阿美語是「阿賴」`,
+ note: `臺灣共有 16 個原住民族群，每一族都有自己獨特的感謝詞彙喔！`
+ },
+ {
+ lang: `越南語`,
+ nativeText: `Cảm ơn`,
+ roman: `Cảm ơn（謝謝）`,
+ tip: `近似「感嗯」，帶有「感恩」的漢字來源`,
+ note: `其實越南語有不少詞彙與漢語有共同淵源，Cảm ơn 就很像「感恩」！`
+ },
+ {
+ lang: `印尼語`,
+ nativeText: `Terima kasih`,
+ roman: `Te-ri-ma ka-sih（謝謝）`,
+ tip: `拆成四拍：特里馬・卡西，意思是「收下這份愛心」`,
+ note: `字面意思是「接受（terima）關愛（kasih）」，把感謝說得超溫暖！`
+ }
+ ]
+ },
+ {
+ id: `eat`,
+ label: `吃飽了嗎 / 請慢用`,
+ cards: [
+ {
+ lang: `臺灣台語`,
+ nativeText: `食飽未？`,
+ roman: `Tsia̍h-pá--buē?`,
+ tip: `近似「呷飽沒？」，是臺灣最經典的問候語！`,
+ note: `早期大家工作辛苦，見面問「吃飽了沒」就像問「你今天過得好嗎」。`
+ },
+ {
+ lang: `臺灣客語（四縣腔）`,
+ nativeText: `食飽吂？`,
+ roman: `Siid-páu-màng?`,
+ tip: `「吂（màng）」代表「了嗎？還沒嗎？」`,
+ note: `客家人熱情好客，問完「食飽吂」，常常立刻盛一碗熱湯或準備點心招待客人！`
+ },
+ {
+ lang: `原住民族語（泰雅語）`,
+ nativeText: `Maniq ta la!`,
+ roman: `Ma-niq ta la!（我們來吃飯吧！）`,
+ tip: `招呼大家一起開動享用美食`,
+ note: `原住民族很重視「分享」，打獵或採收的食物一定要分給部落鄰居一起享用。`
+ },
+ {
+ lang: `越南語`,
+ nativeText: `Chúc ngon miệng`,
+ roman: `Chúc ngon miệng（祝你吃得香甜）`,
+ tip: `開動前祝大家「好胃口」的禮貌用語`,
+ note: `越南餐桌上常是大家圍坐共食，吃飯前晚輩會先邀請長輩開動。`
+ },
+ {
+ lang: `印尼語`,
+ nativeText: `Selamat makan`,
+ roman: `Se-la-mat ma-kan（請慢用）`,
+ tip: `makan 是「吃飯」，開動前說這句祝大家吃得開心`,
+ note: `若要問對方「吃飽了嗎」，可以說「Sudah makan?」喔！`
+ }
+ ]
+ },
+ {
+ id: `goodbye`,
+ label: `再見・祝福`,
+ cards: [
+ {
+ lang: `臺灣台語`,
+ nativeText: `再見 / 順行`,
+ roman: `Tsài-kiàn / Sūn-kiânn`,
+ tip: `道別說「再見（載見）」，祝福對方一路平安可以說「順行」`,
+ note: `長輩送客人出門常說「慢慢仔行（Bān-bān-á kiânn）」，叮嚀路上小心。`
+ },
+ {
+ lang: `臺灣客語（四縣腔）`,
+ nativeText: `正來尞 / 煞猛`,
+ roman: `Zang-lòi-liàu / Sad-mâng`,
+ tip: `「正來尞」意思是「下次再來玩喔！」`,
+ note: `客語道別時常熱情邀請「正來尞」，充滿濃濃的人情味！`
+ },
+ {
+ lang: `原住民族語（阿美 / 排灣）`,
+ nativeText: `Pina'on / Aratj`,
+ roman: `Pi-na-on（小心走）/ A-ratj（再會）`,
+ tip: `互相叮嚀注意安全，期待下次相聚`,
+ note: `不論哪一族，道別時總是不忘提醒對方平安回家。`
+ },
+ {
+ lang: `越南語`,
+ nativeText: `Tạm biệt`,
+ roman: `Tạm biệt（再見）`,
+ tip: `近似「淡別」，意思是暫時道別、很快再見`,
+ note: `和好朋友道別時，也常說「Hẹn gặp lại（約好再見面）」！`
+ },
+ {
+ lang: `印尼語`,
+ nativeText: `Sampai jumpa`,
+ roman: `Sam-pai jum-pa（下次見）`,
+ tip: `sampai 是「直到」，jumpa 是「見面」`,
+ note: `道別說「Sampai jumpa lagi!」，就是「下次再見囉！」的親切說法。`
+ }
+ ]
+ }
+ ];
+
+ const langMatchPairs = [
+ { id: `l1`, left: `Gâu-tsá（敖早）`, right: `臺灣台語・早安`, exp: `台語的「敖早」就是早安，稱讚對方一大早很有精神！` },
+ { id: `l2`, left: `An-zii-se（按仔細）`, right: `臺灣客語・謝謝你`, exp: `客語「按仔細」是感謝對方用心幫忙的意思。` },
+ { id: `l3`, left: `Nga'ay ho`, right: `阿美語・你好 / 願你美好`, exp: `阿美語打招呼說 Nga'ay ho，傳達平安美好的祝福。` },
+ { id: `l4`, left: `Cảm ơn`, right: `越南語・謝謝`, exp: `越南語 Cảm ơn 與「感恩」字源相近，用來表達感謝。` },
+ { id: `l5`, left: `Selamat pagi`, right: `印尼語・早安`, exp: `印尼語 pagi 代表早晨，Selamat pagi 就是早安！` }
+ ];
+
+ const publicSigns = {
+ library: [
+ { lang: `國語 / 華語`, text: `歡迎光臨社區圖書館・請保持安靜` },
+ { lang: `臺灣台語`, text: `歡迎來到圖書館・請輕聲細語（Khah sè-siann--leh）` },
+ { lang: `臺灣客語`, text: `歡迎來尞圖書館・講話愛細聲兜（Kóng-fa oi se-sâng-deu）` },
+ { lang: `越南語`, text: `Chào mừng đến thư viện・Xin giữ yên lặng` },
+ { lang: `印尼語`, text: `Selamat datang di perpustakaan・Harap tenang` }
+ ],
+ station: [
+ { lang: `國語 / 華語`, text: `旅客服務台・需要幫忙請找我們` },
+ { lang: `臺灣台語`, text: `服務台・若有需要請共阮講` },
+ { lang: `臺灣客語`, text: `服務台・有需要請尋𠊎兜（Chhìm ngài-deu）` },
+ { lang: `越南語`, text: `Quầy thông tin・Cần giúp đỡ xin liên hệ` },
+ { lang: `印尼語`, text: `Pusat informasi・Silakan hubungi kami` }
+ ],
+ hospital: [
+ { lang: `國語 / 華語`, text: `友善多語看診・我們用心傾聽` },
+ { lang: `原住民族語（阿美語）`, text: `Nga'ay ho, pakaenay to kiso?（你好，哪裡不舒服嗎？）` },
+ { lang: `臺灣台語`, text: `請坐，慢慢仔講啥物所在無爽快` },
+ { lang: `越南語`, text: `Khám bệnh thân thiện・Xin hãy nói chậm lại` },
+ { lang: `印尼語`, text: `Layanan ramah multibahasa・Ada yang bisa dibantu?` }
+ ]
+ };
+
+ const classmateNames = [
+ {
+ name: `林思穎`,
+ group: `閩南族群（漢人命名）`,
+ parts: [`林（父姓/母姓傳承）`, `思（思考、念舊）`, `穎（聰明出眾）`],
+ story: `爸爸和媽媽討論後決定從父姓「林」，並取名「思穎」，希望她既有飲水思源的感恩之心，又能聰穎快樂地成長。`
+ },
+ {
+ name: `Tali・Yumin（達利・尤敏）`,
+ group: `泰雅族（親子連名制）`,
+ parts: [`Tali（個人名字）`, `Yumin（父親的名字）`],
+ story: `前面是自己的名字，後面連著爸爸的名字！這就是泰雅族的「親子連名制」，部落裡的人一聽就知道他是尤敏的孩子，充滿家族驕傲。`
+ },
+ {
+ name: `陳家豪`,
+ group: `客家族群（輩分＋祝福）`,
+ parts: [`陳（姓氏）`, `家（族譜輩分字）`, `豪（勇敢豪邁）`],
+ story: `堂兄弟姐妹的名字中間都有一個「家」字，這是依照家族族譜的輩分排列的，讓人一看就知道他們是同一代的親戚喔！`
+ },
+ {
+ name: `Nguyễn Minh Anh（阮明英）`,
+ group: `越南新住民家庭`,
+ parts: [`Nguyễn（阮，常見大姓）`, `Minh（明亮聰慧）`, `Anh（才華出眾）`],
+ story: `媽媽來自越南，外公為她取這個名字，意思像太陽一樣明亮有才華；在臺灣學校大家也都親切地叫她「明英」。`
+ }
+ ];
+
+ const quizQuestions = [
+ {
+ q: `把臺灣在地的「馬告（山胡椒）」或「客家鹹豬肉」放到義式披薩上，這最能展現家鄉文化的哪一種特色？`,
+ options: [
+ `文化只有固定一種樣子，不能改變`,
+ `跨文化融合與創新，讓飲食變得更豐富有趣`,
+ `為了取代傳統美食，以後都不吃原味了`
+ ],
+ answer: 1,
+ explanation: `答對了！不同族群的食材和料理方式相遇後，會互相交流並產生「融合與創新」，像米漢堡、馬告披薩都是好例子！`
+ },
+ {
+ q: `在氣候炎熱的臺灣夏天，許多穆斯林朋友選擇透氣材質、色彩亮麗的「希賈布（Hijab）」頭巾，我們應該怎麼看待？`,
+ options: [
+ `覺得很奇怪，要求大家穿得一模一樣`,
+ `尊重彼此的宗教信仰，並欣賞她們配合氣候調整的智慧`,
+ `認為戴頭巾就一定不能參加戶外活動`
+ ],
+ answer: 1,
+ explanation: `很棒的態度！希賈布代表伊斯蘭信仰與自我認同，選擇透氣排汗布料正是適應臺灣氣候的生活智慧，值得尊重！`
+ },
+ {
+ q: `在火車站、醫院或社區圖書館看到國語、台語、客語、原住民族語和東南亞語言的指示牌，這代表什麼意義？`,
+ options: [
+ `語言平等與友善溝通，讓不同背景的人都能安心生活`,
+ `只是為了讓牆壁看起來比較熱鬧`,
+ `強迫每個人一定要背熟所有的語言才能搭車`
+ ],
+ answer: 0,
+ explanation: `沒錯！多語標示能幫助所有生活在家鄉的居民看懂資訊，體現「語言平等」與尊重多元文化。`
+ },
+ {
+ q: `泰雅族同學「Tali・Yumin」的名字裡，「Yumin」是爸爸的名字。這種把孩子與父母名字連在一起的命名方式稱為什麼？`,
+ options: [
+ `親子連名制，展現家族的連結與傳承`,
+ `隨便亂取的英文名字`,
+ `按照出生星期幾來取名`
+ ],
+ answer: 0,
+ explanation: `正確！「親子連名制」讓人一聽名字就知道你是哪個家庭的孩子；另外排灣族有家屋名、達悟族有親隨子名，各有精彩傳統！`
+ },
+ {
+ q: `班上新住民同學帶來家鄉的「越南生春捲」和大家分享，有人好奇說「味道好特別喔」，你怎麼做最友善？`,
+ options: [
+ `捂住鼻子說好怪，不願意試試看`,
+ `微笑詢問裡面包了什麼特色食材與故事，一起交流品嘗`,
+ `叫同學以後只能帶大家都熟悉的麵包或飯糰`
+ ],
+ answer: 1,
+ explanation: `太棒了！用好奇又友善的心去認識同學的家鄉味道，就是最棒的多元文化小公民！`
+ }
+ ];
+
+ // ==========================================
+ // APPLICATION STATE (persisted via notebookAppApi)
+ // ==========================================
+ const DEFAULT_STATE = {
+ matchedFoodIds: [],
+ fusionBase: `rice`,
+ fusionTopping: `makau_pork`,
+ savedDishes: [],
+ flippedClothingIds: [],
+ exploredClothingIds: [],
+ activeOccasion: `daily`,
+ activeLangSituation: `morning`,
+ matchedLangIds: [],
+ activePublicSign: `library`,
+ nameSurvey: {
+ submitted: false,
+ name: ``,
+ origin: `傳承姓氏與長輩期待`,
+ meaning: ``,
+ favorite: `親子連名讓人一聽就知道家族連結`
+ },
+ quizIndex: 0,
+ quizAnswers: {}
+ };
+
+ let appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+ let selectedFoodLeft = null;
+ let selectedLangLeft = null;
+
+ async function saveState() {
+ try {
+ if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+ await window.notebookAppApi.setAppState(appState);
+ }
+ } catch (err) {
+ // Ignore non-fatal storage errors in offline preview
+ }
+ updatePassportProgress();
+ }
+
+ // ==========================================
+ // PASSPORT PROGRESS
+ // ==========================================
+ function updatePassportProgress() {
+ const doneFood = appState.matchedFoodIds.length === foodMatchPairs.length;
+ const doneClothing = (appState.exploredClothingIds || []).length === clothingCards.length;
+ const doneLang = appState.matchedLangIds.length === langMatchPairs.length;
+ const doneNames = Boolean(appState.nameSurvey && appState.nameSurvey.submitted);
+ const doneQuiz = Object.keys(appState.quizAnswers || {}).length === quizQuestions.length;
+
+ const statuses = [
+ { id: `stamp-food`, label: `1. 飲食配對`, done: doneFood },
+ { id: `stamp-clothing`, label: `2. 服飾翻翻卡`, done: doneClothing },
+ { id: `stamp-language`, label: `3. 多語配對`, done: doneLang },
+ { id: `stamp-names`, label: `4. 姓名小調查`, done: doneNames },
+ { id: `stamp-quiz`, label: `5. 闖關測驗`, done: doneQuiz }
+ ];
+
+ let count = 0;
+ statuses.forEach(item => {
+ if (item.done) count += 1;
+ const el = document.getElementById(item.id);
+ if (!el) return;
+ if (item.done) {
+ el.classList.add('is-done');
+ el.innerHTML = `<i data-lucide="check-circle-2" aria-hidden="true"></i><span>${item.label}</span>`;
+ } else {
+ el.classList.remove('is-done');
+ el.innerHTML = `<i data-lucide="circle-dashed" aria-hidden="true"></i><span>${item.label}</span>`;
+ }
+ });
+
+ const countEl = document.getElementById('passport-count');
+ const fillEl = document.getElementById('passport-progress-fill');
+ const barEl = document.getElementById('passport-progressbar');
+ const statusTextEl = document.getElementById('passport-status-text');
+
+ if (countEl) countEl.textContent = `${count} / 5`;
+ if (fillEl) fillEl.style.width = `${(count / 5) * 100}%`;
+ if (barEl) barEl.setAttribute('aria-valuenow', String(count));
+ if (statusTextEl) {
+ if (count === 5) {
+ statusTextEl.textContent = `太棒了！你已集滿 5 個文化探索印章，成為真正的「多元文化小達人」！`;
+ } else {
+ statusTextEl.textContent = `已完成 ${count} 個探索任務，繼續往下體驗其他單元吧！`;
+ }
+ }
+ refreshIcons();
+ }
+
+ function handleResetAll(btn) {
+ if (!btn) return;
+ if (btn.dataset.armed !== 'true') {
+ btn.dataset.armed = 'true';
+ btn.innerHTML = `<i data-lucide="alert-circle" aria-hidden="true"></i><span>再點一次確認重置</span>`;
+ refreshIcons();
+ setTimeout(() => {
+ if (btn.dataset.armed === 'true') {
+ btn.dataset.armed = 'false';
+ btn.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true"></i><span>重置進度</span>`;
+ refreshIcons();
+ }
+ }, 4000);
+ return;
+ }
+ btn.dataset.armed = 'false';
+ btn.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true"></i><span>重置進度</span>`;
+ appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+ selectedFoodLeft = null;
+ selectedLangLeft = null;
+ renderAll();
+ saveState();
+ }
+
+ // ==========================================
+ // UNIT 1: FOOD MATCHING & FUSION BUILDER
+ // ==========================================
+ function renderFoodMatch() {
+ const leftCol = document.getElementById('food-left-col');
+ const rightCol = document.getElementById('food-right-col');
+ const scoreEl = document.getElementById('food-match-score');
+ if (!leftCol || !rightCol) return;
+
+ const rightOrder = [`kumquat`, `lemongrass`, `makau`, `shallot`];
+
+ leftCol.innerHTML = foodMatchPairs.map(pair => {
+ const matched = appState.matchedFoodIds.includes(pair.id);
+ const selected = selectedFoodLeft === pair.id;
+ return `<button type="button" class="match-btn ${matched ? 'is-matched' : ''} ${selected ? 'is-selected' : ''}" ${matched ? 'disabled' : ''} onclick="pickFoodLeft('${pair.id}')">
+ <i data-lucide="${matched ? 'check-circle-2' : 'sparkles'}" aria-hidden="true"></i>
+ <span>${pair.leftLabel}</span>
+ </button>`;
+ }).join('');
+
+ rightCol.innerHTML = rightOrder.map(id => {
+ const pair = foodMatchPairs.find(p => p.id === id);
+ if (!pair) return '';
+ const matched = appState.matchedFoodIds.includes(pair.id);
+ return `<button type="button" class="match-btn ${matched ? 'is-matched' : ''}" ${matched ? 'disabled' : ''} onclick="pickFoodRight('${pair.id}')">
+ <i data-lucide="${matched ? 'check-circle-2' : 'utensils'}" aria-hidden="true"></i>
+ <span>${pair.rightLabel}</span>
+ </button>`;
+ }).join('');
+
+ if (scoreEl) scoreEl.textContent = `已配對 ${appState.matchedFoodIds.length} / ${foodMatchPairs.length}`;
+ refreshIcons();
+ }
+
+ function pickFoodLeft(id) {
+ if (appState.matchedFoodIds.includes(id)) return;
+ selectedFoodLeft = id;
+ const item = foodMatchPairs.find(p => p.id === id);
+ const fb = document.getElementById('food-match-feedback');
+ if (fb && item) {
+ fb.className = `feedback-banner is-info`;
+ fb.innerHTML = `<i data-lucide="arrow-right-circle" aria-hidden="true"></i><span>已選擇「<strong>${item.leftLabel}</strong>」，請點右邊對應的族群與料理！</span>`;
+ }
+ renderFoodMatch();
+ }
+
+ function pickFoodRight(rightId) {
+ const fb = document.getElementById('food-match-feedback');
+ if (!selectedFoodLeft) {
+ if (fb) {
+ fb.className = `feedback-banner is-info`;
+ fb.innerHTML = `<i data-lucide="info" aria-hidden="true"></i><span>請先點選左邊的食材，再點選右邊來配對喔！</span>`;
+ refreshIcons();
+ }
+ return;
+ }
+
+ const item = foodMatchPairs.find(p => p.id === selectedFoodLeft);
+ if (selectedFoodLeft === rightId && item) {
+ if (!appState.matchedFoodIds.includes(rightId)) {
+ appState.matchedFoodIds.push(rightId);
+ }
+ selectedFoodLeft = null;
+ if (fb) {
+ fb.className = `feedback-banner is-success`;
+ fb.innerHTML = `<i data-lucide="check-circle" aria-hidden="true"></i><span><strong>配對成功！</strong>${item.explanation}</span>`;
+ }
+ renderFoodMatch();
+ saveState();
+ } else {
+ if (fb) {
+ fb.className = `feedback-banner is-error`;
+ fb.innerHTML = `<i data-lucide="help-circle" aria-hidden="true"></i><span>差一點點！可以再看一次上面的四張族群飲食卡，想一想「${item ? item.leftLabel : ''}」屬於哪個族群喔！</span>`;
+ }
+ refreshIcons();
+ }
+ }
+
+ function renderFusionBuilder() {
+ const baseWrap = document.getElementById('fusion-base-choices');
+ const toppingWrap = document.getElementById('fusion-topping-choices');
+ const svgWrap = document.getElementById('fusion-svg-wrap');
+ const tagsEl = document.getElementById('fusion-tags');
+ const nameEl = document.getElementById('fusion-dish-name');
+ const descEl = document.getElementById('fusion-dish-desc');
+ const savedWrap = document.getElementById('saved-dishes-list');
+
+ if (baseWrap) {
+ baseWrap.innerHTML = fusionBases.map(b => {
+ const active = appState.fusionBase === b.id;
+ return `<button type="button" class="chip ${active ? 'is-active' : ''}" aria-pressed="${active}" onclick="selectFusionBase('${b.id}')">${b.label}</button>`;
+ }).join('');
+ }
+
+ if (toppingWrap) {
+ toppingWrap.innerHTML = fusionToppings.map(t => {
+ const active = appState.fusionTopping === t.id;
+ return `<button type="button" class="chip is-grape ${active ? 'is-active' : ''}" aria-pressed="${active}" onclick="selectFusionTopping('${t.id}')">${t.label}</button>`;
+ }).join('');
+ }
+
+ const baseObj = fusionBases.find(b => b.id === appState.fusionBase) || fusionBases[0];
+ const topObj = fusionToppings.find(t => t.id === appState.fusionTopping) || fusionToppings[0];
+ const key = `${baseObj.id}+${topObj.id}`;
+ const recipe = fusionRecipes[key];
+
+ if (tagsEl) tagsEl.textContent = `${baseObj.tag} × ${topObj.tag}`;
+ if (nameEl && recipe) nameEl.textContent = recipe.name;
+ if (descEl && recipe) descEl.textContent = recipe.desc;
+
+ if (svgWrap) {
+ let baseShape = '';
+ if (baseObj.id === 'rice') {
+ baseShape = `<circle cx="56" cy="56" r="40" fill="var(--surface-container-low)" stroke="var(--outline-variant)" stroke-width="3"/><circle cx="56" cy="56" r="30" fill="var(--tangerine-container)"/>`;
+ } else if (baseObj.id === 'pizza') {
+ baseShape = `<polygon points="56,14 96,92 16,92" fill="var(--tangerine-container)" stroke="var(--data-4)" stroke-width="4" stroke-linejoin="round"/><path d="M22 86 L90 86" stroke="var(--primary)" stroke-width="7" stroke-linecap="round"/>`;
+ } else {
+ baseShape = `<rect x="16" y="34" width="80" height="44" rx="22" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="3"/>`;
+ }
+
+ let topColor = 'var(--primary)';
+ if (topObj.id === 'hakka_pork') topColor = 'var(--secondary)';
+ if (topObj.id === 'taiwan_chicken') topColor = 'var(--data-4)';
+ if (topObj.id === 'thai_shrimp') topColor = 'var(--tertiary)';
+
+ svgWrap.innerHTML = `<svg viewBox="0 0 112 112" width="112" height="112" aria-hidden="true">
+ <circle cx="56" cy="56" r="52" fill="var(--surface-container-low)"/>
+ ${baseShape}
+ <circle cx="46" cy="56" r="10" fill="${topColor}"/>
+ <circle cx="67" cy="54" r="9" fill="var(--positive)"/>
+ <circle cx="56" cy="68" r="8" fill="${topColor}" opacity="0.85"/>
+ </svg>`;
+ }
+
+ if (savedWrap) {
+ if (!appState.savedDishes || appState.savedDishes.length === 0) {
+ savedWrap.innerHTML = `<span style="font-size: var(--label-size); color: var(--on-surface-variant);">尚未收藏料理，試著組合看看吧！</span>`;
+ } else {
+ savedWrap.innerHTML = appState.savedDishes.map(dish =>
+ `<span class="tag is-pink"><i data-lucide="heart" aria-hidden="true"></i>${dish}</span>`
+ ).join('');
+ refreshIcons();
+ }
+ }
+ }
+
+ function selectFusionBase(id) {
+ appState.fusionBase = id;
+ renderFusionBuilder();
+ saveState();
+ }
+
+ function selectFusionTopping(id) {
+ appState.fusionTopping = id;
+ renderFusionBuilder();
+ saveState();
+ }
+
+ function saveFusionDish() {
+ const key = `${appState.fusionBase}+${appState.fusionTopping}`;
+ const recipe = fusionRecipes[key];
+ const msgEl = document.getElementById('fusion-save-msg');
+ if (!recipe) return;
+ if (!appState.savedDishes) appState.savedDishes = [];
+ if (!appState.savedDishes.includes(recipe.name)) {
+ appState.savedDishes.push(recipe.name);
+ if (msgEl) msgEl.textContent = `已收藏「${recipe.name}」！`;
+ } else {
+ if (msgEl) msgEl.textContent = `「${recipe.name}」已經在收藏單裡囉！`;
+ }
+ renderFusionBuilder();
+ saveState();
+ }
+
+ // ==========================================
+ // UNIT 2: CLOTHING FLIP CARDS & OCCASIONS
+ // ==========================================
+ function getClothingSvg(type) {
+ if (type === 'indigenous') {
+ return `<svg viewBox="0 0 180 120" width="160" height="110" aria-hidden="true">
+ <path d="M52 24 L128 24 L144 54 L124 62 L120 46 L120 104 L60 104 L60 46 L56 62 L36 54 Z" fill="var(--primary)"/>
+ <polygon points="90,38 104,52 90,66 76,52" fill="var(--surface-container-low)"/>
+ <polygon points="90,44 98,52 90,60 82,52" fill="var(--data-4)"/>
+ <rect x="64" y="80" width="52" height="10" rx="5" fill="var(--tertiary-container)"/>
+ </svg>`;
+ }
+ if (type === 'hakka') {
+ return `<svg viewBox="0 0 180 120" width="160" height="110" aria-hidden="true">
+ <path d="M54 24 L126 24 L146 66 L124 72 L120 50 L120 104 L60 104 L60 50 L56 72 L34 66 Z" fill="var(--on-tertiary-container)"/>
+ <path d="M74 24 L106 46 L106 104" stroke="var(--tertiary-container)" stroke-width="4" fill="none"/>
+ <rect x="34" y="60" width="22" height="10" rx="4" fill="var(--tertiary-container)"/>
+ <rect x="124" y="60" width="22" height="10" rx="4" fill="var(--tertiary-container)"/>
+ </svg>`;
+ }
+ if (type === 'aodai') {
+ return `<svg viewBox="0 0 180 120" width="160" height="110" aria-hidden="true">
+ <path d="M72 20 L108 20 L124 48 L112 54 L106 40 L108 106 L94 106 L90 70 L86 106 L72 106 L74 40 L68 54 L56 48 Z" fill="var(--secondary)"/>
+ <circle cx="90" cy="48" r="7" fill="var(--primary-container)"/>
+ <rect x="76" y="88" width="10" height="18" rx="3" fill="var(--surface-container-low)"/>
+ <rect x="94" y="88" width="10" height="18" rx="3" fill="var(--surface-container-low)"/>
+ </svg>`;
+ }
+ return `<svg viewBox="0 0 180 120" width="160" height="110" aria-hidden="true">
+ <path d="M90 18 C62 18 48 44 48 76 L42 104 L138 104 L132 76 C132 44 118 18 90 18 Z" fill="var(--tertiary)"/>
+ <circle cx="90" cy="54" r="22" fill="var(--tangerine-container)"/>
+ <path d="M64 76 Q90 92 116 76" stroke="var(--surface-container-low)" stroke-width="5" fill="none" stroke-linecap="round"/>
+ </svg>`;
+ }
+
+ function renderClothingCards() {
+ const grid = document.getElementById('clothing-flip-grid');
+ const countEl = document.getElementById('flip-count');
+ if (!grid) return;
+
+ grid.innerHTML = clothingCards.map(card => {
+ const flipped = appState.flippedClothingIds.includes(card.id);
+ if (!flipped) {
+ return `<button type="button" class="flip-card" onclick="toggleClothingCard('${card.id}')" aria-expanded="false">
+ <div>
+ <span class="tag is-pink">${card.group}</span>
+ <div class="costume-art-box" style="margin-top: var(--space-sm);">
+ ${getClothingSvg(card.svgType)}
+ </div>
+ <h3 class="subhead" style="margin-top: var(--space-md);">${card.question}</h3>
+ </div>
+ <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 700; font-size: var(--label-size);">
+ <i data-lucide="rotate-cw" aria-hidden="true"></i>
+ <span>${card.frontDetail}</span>
+ </div>
+ </button>`;
+ } else {
+ return `<button type="button" class="flip-card is-flipped" onclick="toggleClothingCard('${card.id}')" aria-expanded="true">
+ <div style="display: flex; flex-direction: column; gap: 8px;">
+ <span class="tag is-positive"><i data-lucide="check" aria-hidden="true"></i>${card.group}</span>
+ <div style="font-size: var(--label-size);"><strong>材質特色：</strong>${card.material}</div>
+ <div style="font-size: var(--label-size);"><strong>文化意義：</strong>${card.meaning}</div>
+ <div style="font-size: var(--label-size); background: var(--surface-container-low); padding: 8px 10px; border-radius: var(--rounded); color: var(--secondary);">
+ <strong>現代創新：</strong>${card.modern}
+ </div>
+ </div>
+ <div style="display: flex; align-items: center; gap: 6px; color: var(--secondary); font-weight: 700; font-size: var(--label-size);">
+ <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+ <span>點此翻回正面圖案</span>
+ </div>
+ </button>`;
+ }
+ }).join('');
+
+ if (countEl) countEl.textContent = String((appState.exploredClothingIds || []).length);
+ refreshIcons();
+ }
+
+ function toggleClothingCard(id) {
+ if (!appState.exploredClothingIds) appState.exploredClothingIds = [];
+ if (!appState.exploredClothingIds.includes(id)) {
+ appState.exploredClothingIds.push(id);
+ }
+ if (!appState.flippedClothingIds.includes(id)) {
+ appState.flippedClothingIds.push(id);
+ } else {
+ appState.flippedClothingIds = appState.flippedClothingIds.filter(x => x !== id);
+ }
+ renderClothingCards();
+ saveState();
+ }
+
+ function selectOccasion(key) {
+ appState.activeOccasion = key;
+ const btns = document.querySelectorAll('#occasion-buttons .chip');
+ const keys = ['daily', 'festival', 'modern'];
+ btns.forEach((btn, idx) => {
+ const isActive = keys[idx] === key;
+ btn.classList.toggle('is-active', isActive);
+ btn.setAttribute('aria-pressed', String(isActive));
+ });
+ const detail = occasionDetails[key] || occasionDetails.daily;
+ const titleEl = document.getElementById('occasion-title');
+ const descEl = document.getElementById('occasion-desc');
+ if (titleEl) titleEl.textContent = detail.title;
+ if (descEl) descEl.textContent = detail.desc;
+ saveState();
+ }
+
+ // ==========================================
+ // UNIT 3: NON-AUDIO MULTILINGUAL CARDS & MATCH
+ // ==========================================
+ function renderLanguageCards() {
+ const tabsEl = document.getElementById('lang-situation-tabs');
+ const cardsEl = document.getElementById('lang-cards-container');
+ if (!tabsEl || !cardsEl) return;
+
+ tabsEl.innerHTML = languageSituations.map(sit => {
+ const active = appState.activeLangSituation === sit.id;
+ return `<button type="button" class="chip ${active ? 'is-active' : ''}" aria-pressed="${active}" onclick="selectLangSituation('${sit.id}')">${sit.label}</button>`;
+ }).join('');
+
+ const currentSit = languageSituations.find(s => s.id === appState.activeLangSituation) || languageSituations[0];
+ cardsEl.innerHTML = currentSit.cards.map(c => `
+ <article class="lang-card">
+ <div style="display: flex; justify-content: space-between; align-items: center;">
+ <span class="tag">${c.lang}</span>
+ <span style="font-size: var(--label-size); color: var(--on-surface-variant); font-weight: 700;">圖文讀音小幫手</span>
+ </div>
+ <div class="phrase-box">
+ <div class="phrase-native">${c.nativeText}</div>
+ <div class="phrase-roman">${c.roman}</div>
+ <div class="phrase-tip">
+ <i data-lucide="book-open" aria-hidden="true"></i>
+ <span>${c.tip}</span>
+ </div>
+ </div>
+ <p style="margin: 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ <strong>文化小筆記：</strong>${c.note}
+ </p>
+ </article>
+ `).join('');
+ refreshIcons();
+ }
+
+ function selectLangSituation(id) {
+ appState.activeLangSituation = id;
+ renderLanguageCards();
+ saveState();
+ }
+
+ function renderLangMatch() {
+ const leftCol = document.getElementById('lang-left-col');
+ const rightCol = document.getElementById('lang-right-col');
+ const scoreEl = document.getElementById('lang-match-score');
+ if (!leftCol || !rightCol) return;
+
+ const rightOrder = [`l4`, `l2`, `l5`, `l1`, `l3`];
+
+ leftCol.innerHTML = langMatchPairs.map(p => {
+ const matched = appState.matchedLangIds.includes(p.id);
+ const selected = selectedLangLeft === p.id;
+ return `<button type="button" class="match-btn ${matched ? 'is-matched' : ''} ${selected ? 'is-selected' : ''}" ${matched ? 'disabled' : ''} onclick="pickLangLeft('${p.id}')">
+ <i data-lucide="${matched ? 'check-circle-2' : 'message-square'}" aria-hidden="true"></i>
+ <span>${p.left}</span>
+ </button>`;
+ }).join('');
+
+ rightCol.innerHTML = rightOrder.map(id => {
+ const p = langMatchPairs.find(item => item.id === id);
+ if (!p) return '';
+ const matched = appState.matchedLangIds.includes(p.id);
+ return `<button type="button" class="match-btn ${matched ? 'is-matched' : ''}" ${matched ? 'disabled' : ''} onclick="pickLangRight('${p.id}')">
+ <i data-lucide="${matched ? 'check-circle-2' : 'globe'}" aria-hidden="true"></i>
+ <span>${p.right}</span>
+ </button>`;
+ }).join('');
+
+ if (scoreEl) scoreEl.textContent = `已配對 ${appState.matchedLangIds.length} / ${langMatchPairs.length}`;
+ refreshIcons();
+ }
+
+ function pickLangLeft(id) {
+ if (appState.matchedLangIds.includes(id)) return;
+ selectedLangLeft = id;
+ const p = langMatchPairs.find(item => item.id === id);
+ const fb = document.getElementById('lang-match-feedback');
+ if (fb && p) {
+ fb.className = `feedback-banner is-info`;
+ fb.innerHTML = `<i data-lucide="arrow-right-circle" aria-hidden="true"></i><span>已選擇「<strong>${p.left}</strong>」，請點右邊對應的語言與意思！</span>`;
+ }
+ renderLangMatch();
+ }
+
+ function pickLangRight(rightId) {
+ const fb = document.getElementById('lang-match-feedback');
+ if (!selectedLangLeft) {
+ if (fb) {
+ fb.className = `feedback-banner is-info`;
+ fb.innerHTML = `<i data-lucide="info" aria-hidden="true"></i><span>請先點選左邊的問候語卡片，再點選右邊來配對！</span>`;
+ refreshIcons();
+ }
+ return;
+ }
+
+ const item = langMatchPairs.find(p => p.id === selectedLangLeft);
+ if (selectedLangLeft === rightId && item) {
+ if (!appState.matchedLangIds.includes(rightId)) {
+ appState.matchedLangIds.push(rightId);
+ }
+ selectedLangLeft = null;
+ if (fb) {
+ fb.className = `feedback-banner is-success`;
+ fb.innerHTML = `<i data-lucide="check-circle" aria-hidden="true"></i><span><strong>答對了！</strong>${item.exp}</span>`;
+ }
+ renderLangMatch();
+ saveState();
+ } else {
+ if (fb) {
+ fb.className = `feedback-banner is-error`;
+ fb.innerHTML = `<i data-lucide="help-circle" aria-hidden="true"></i><span>再想一想！可以往上滑動切換「早安・你好」與「謝謝你」對照卡找線索喔。</span>`;
+ }
+ refreshIcons();
+ }
+ }
+
+ function selectPublicSign(key) {
+ appState.activePublicSign = key;
+ const btns = document.querySelectorAll('#public-sign-tabs .chip');
+ const keys = ['library', 'station', 'hospital'];
+ btns.forEach((btn, idx) => {
+ const active = keys[idx] === key;
+ btn.classList.toggle('is-active', active);
+ btn.setAttribute('aria-pressed', String(active));
+ });
+ renderPublicSign();
+ saveState();
+ }
+
+ function renderPublicSign() {
+ const grid = document.getElementById('public-sign-grid');
+ if (!grid) return;
+ const items = publicSigns[appState.activePublicSign] || publicSigns.library;
+ grid.innerHTML = items.map(item => `
+ <div class="sign-tile">
+ <span style="font-size: var(--label-size); font-weight: 700; color: var(--secondary);">${item.lang}</span>
+ <strong style="color: var(--on-surface);">${item.text}</strong>
+ </div>
+ `).join('');
+ }
+
+ // ==========================================
+ // UNIT 4: NAMES & SURVEY
+ // ==========================================
+ function renderClassmateNames() {
+ const grid = document.getElementById('student-names-grid');
+ if (!grid) return;
+ grid.innerHTML = classmateNames.map(st => `
+ <article class="name-story-card">
+ <span class="tag">${st.group}</span>
+ <h3 class="subhead" style="color: var(--primary);">${st.name}</h3>
+ <div class="name-breakdown">
+ ${st.parts.map((pt, idx) => `<span class="name-part ${idx % 2 === 1 ? 'is-second' : ''}">${pt}</span>`).join('')}
+ </div>
+ <p style="margin: 0; font-size: var(--label-size); color: var(--on-surface-variant);">
+ ${st.story}
+ </p>
+ </article>
+ `).join('');
+ }
+
+ function renderNameSurveyPreview() {
+ const s = appState.nameSurvey || DEFAULT_STATE.nameSurvey;
+ const nameInput = document.getElementById('survey-name');
+ const originSelect = document.getElementById('survey-origin');
+ const meaningInput = document.getElementById('survey-meaning');
+ const favSelect = document.getElementById('survey-favorite');
+
+ if (nameInput && nameInput.value !== s.name) nameInput.value = s.name;
+ if (originSelect && s.origin) originSelect.value = s.origin;
+ if (meaningInput && meaningInput.value !== s.meaning) meaningInput.value = s.meaning;
+ if (favSelect && s.favorite) favSelect.value = s.favorite;
+
+ const pName = document.getElementById('preview-name');
+ const pOrigin = document.getElementById('preview-origin');
+ const pMeaning = document.getElementById('preview-meaning');
+ const pFav = document.getElementById('preview-favorite');
+ const statusTag = document.getElementById('badge-status-tag');
+
+ if (s.submitted) {
+ if (pName) pName.textContent = s.name;
+ if (pOrigin) pOrigin.textContent = `命名文化類型：${s.origin}`;
+ if (pMeaning) pMeaning.textContent = s.meaning;
+ if (pFav) pFav.textContent = `我最欣賞：${s.favorite}`;
+ if (statusTag) {
+ statusTag.className = `tag is-positive`;
+ statusTag.textContent = `已完成故事紀錄`;
+ }
+ } else {
+ if (pName) pName.textContent = `尚未填寫姓名`;
+ if (pOrigin) pOrigin.textContent = `請在左側完成你的姓名小調查`;
+ if (pMeaning) pMeaning.textContent = `每一個名字都有愛與期待。試著問問家人，把你的故事寫下來吧！`;
+ if (pFav) pFav.textContent = `尊重每個人的名字、唸對朋友的名字，就是最棒的友善行動！`;
+ if (statusTag) {
+ statusTag.className = `tag`;
+ statusTag.textContent = `等待填寫`;
+ }
+ }
+ }
+
+ function submitNameSurvey(event) {
+ event.preventDefault();
+ const nameVal = (document.getElementById('survey-name')?.value || '').trim();
+ const originVal = document.getElementById('survey-origin')?.value || '';
+ const meaningVal = (document.getElementById('survey-meaning')?.value || '').trim();
+ const favVal = document.getElementById('survey-favorite')?.value || '';
+ const msgEl = document.getElementById('survey-message');
+
+ if (!nameVal || !meaningVal) {
+ if (msgEl) {
+ msgEl.style.color = `var(--error)`;
+ msgEl.textContent = `請填寫「我的姓名」以及「名字背後的意義或故事」後再送出喔！`;
+ }
+ return;
+ }
+
+ appState.nameSurvey = {
+ submitted: true,
+ name: nameVal,
+ origin: originVal,
+ meaning: meaningVal,
+ favorite: favVal
+ };
+ if (msgEl) {
+ msgEl.style.color = `var(--positive)`;
+ msgEl.textContent = `太棒了！你的姓名文化名片已經產生並儲存囉！`;
+ }
+ renderNameSurveyPreview();
+ saveState();
+ }
+
+ function exportNameCard() {
+ const s = appState.nameSurvey;
+ const msgEl = document.getElementById('survey-message');
+ if (!s || !s.submitted) {
+ if (msgEl) {
+ msgEl.style.color = `var(--warning)`;
+ msgEl.textContent = `請先填寫並按下「完成姓名調查」，就可以匯出紀錄檔囉！`;
+ }
+ return;
+ }
+ const textContent = `【家鄉的多元文化 — 我的姓名故事學習單】\n` +
+ `姓名或小名：${s.name}\n` +
+ `命名方式：${s.origin}\n` +
+ `名字故事：${s.meaning}\n` +
+ `我的跨文化發現：${s.favorite}\n` +
+ `已收藏創意融合料理：${(appState.savedDishes || []).join('、') || '尚未收藏'}\n`;
+
+ if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === 'function') {
+ window.notebookAppApi.triggerFileDownload({
+ content: textContent,
+ contentType: 'text/plain',
+ encoding: 'UTF-8',
+ filename: '我的多元文化姓名故事.txt'
+ });
+ }
+ if (msgEl) {
+ msgEl.style.color = `var(--secondary)`;
+ msgEl.textContent = `已匯出學習紀錄文字檔！`;
+ }
+ }
+
+ // ==========================================
+ // UNIT 5: QUIZ
+ // ==========================================
+ function renderQuiz() {
+ const idx = appState.quizIndex || 0;
+ const qObj = quizQuestions[idx] || quizQuestions[0];
+ const progEl = document.getElementById('quiz-progress-label');
+ const scoreEl = document.getElementById('quiz-score-label');
+ const qTextEl = document.getElementById('quiz-question-text');
+ const optListEl = document.getElementById('quiz-options-list');
+ const fbEl = document.getElementById('quiz-feedback');
+ const prevBtn = document.getElementById('quiz-prev-btn');
+ const nextBtn = document.getElementById('quiz-next-btn');
+
+ const answers = appState.quizAnswers || {};
+ let correctCount = 0;
+ Object.keys(answers).forEach(k => {
+ const qi = Number(k);
+ if (quizQuestions[qi] && answers[k] === quizQuestions[qi].answer) {
+ correctCount += 1;
+ }
+ });
+
+ if (progEl) progEl.textContent = `第 ${idx + 1} 題 / 共 ${quizQuestions.length} 題`;
+ if (scoreEl) scoreEl.textContent = `目前答對：${correctCount} 題`;
+ if (qTextEl) qTextEl.textContent = qObj.q;
+
+ const userChoice = answers[String(idx)];
+ const hasAnswered = userChoice !== undefined;
+
+ if (optListEl) {
+ const labels = [`A`, `B`, `C`];
+ optListEl.innerHTML = qObj.options.map((opt, optIdx) => {
+ let cls = `quiz-option`;
+ if (hasAnswered) {
+ if (optIdx === qObj.answer) cls += ` is-correct`;
+ else if (optIdx === userChoice) cls += ` is-incorrect`;
+ }
+ return `<button type="button" class="${cls}" onclick="answerQuiz(${idx}, ${optIdx})">
+ <span class="tag ${optIdx === qObj.answer && hasAnswered ? 'is-positive' : ''}">${labels[optIdx]}</span>
+ <span>${opt}</span>
+ </button>`;
+ }).join('');
+ }
+
+ if (fbEl) {
+ if (hasAnswered) {
+ const isRight = userChoice === qObj.answer;
+ fbEl.style.display = `flex`;
+ fbEl.className = `feedback-banner ${isRight ? 'is-success' : 'is-error'}`;
+ fbEl.innerHTML = `<i data-lucide="${isRight ? 'check-circle' : 'lightbulb'}" aria-hidden="true"></i>
+ <span><strong>${isRight ? '太厲害了！' : '再想想看喔：'}</strong>${qObj.explanation}</span>`;
+ } else {
+ fbEl.style.display = `none`;
+ }
+ }
+
+ if (prevBtn) prevBtn.disabled = idx === 0;
+ if (nextBtn) {
+ nextBtn.disabled = idx === quizQuestions.length - 1;
+ nextBtn.textContent = idx === quizQuestions.length - 1 ? `已到最後一題` : `下一題`;
+ }
+
+ const certTitle = document.getElementById('cert-title');
+ if (certTitle) {
+ if (Object.keys(answers).length === quizQuestions.length) {
+ certTitle.textContent = `恭喜完成測驗（答對 ${correctCount} / 5 題）— 欣賞差異、讓家鄉更精彩！`;
+ } else {
+ certTitle.textContent = `欣賞差異、互相學習，讓家鄉更精彩！`;
+ }
+ }
+
+ refreshIcons();
+ }
+
+ function answerQuiz(qIdx, optIdx) {
+ if (!appState.quizAnswers) appState.quizAnswers = {};
+ appState.quizAnswers[String(qIdx)] = optIdx;
+ renderQuiz();
+ saveState();
+ }
+
+ function prevQuizQuestion() {
+ if (appState.quizIndex > 0) {
+ appState.quizIndex -= 1;
+ renderQuiz();
+ saveState();
+ }
+ }
+
+ function nextQuizQuestion() {
+ if (appState.quizIndex < quizQuestions.length - 1) {
+ appState.quizIndex += 1;
+ renderQuiz();
+ saveState();
+ }
+ }
+
+ function restartQuiz() {
+ appState.quizIndex = 0;
+ appState.quizAnswers = {};
+ renderQuiz();
+ saveState();
+ }
+
+ // ==========================================
+ // INITIALIZATION & RENDER PIPELINE
+ // ==========================================
+ function refreshIcons() {
+ if (window.lucide && typeof window.lucide.createIcons === 'function') {
+ window.lucide.createIcons();
+ }
+ }
+
+ function renderAll() {
+ renderFoodMatch();
+ renderFusionBuilder();
+ renderClothingCards();
+ selectOccasionQuiet(appState.activeOccasion || `daily`);
+ renderLanguageCards();
+ renderLangMatch();
+ selectPublicSignQuiet(appState.activePublicSign || `library`);
+ renderClassmateNames();
+ renderNameSurveyPreview();
+ renderQuiz();
+ updatePassportProgress();
+ refreshIcons();
+ }
+
+ function selectOccasionQuiet(key) {
+ const btns = document.querySelectorAll('#occasion-buttons .chip');
+ const keys = ['daily', 'festival', 'modern'];
+ btns.forEach((btn, idx) => {
+ const isActive = keys[idx] === key;
+ btn.classList.toggle('is-active', isActive);
+ btn.setAttribute('aria-pressed', String(isActive));
+ });
+ const detail = occasionDetails[key] || occasionDetails.daily;
+ const titleEl = document.getElementById('occasion-title');
+ const descEl = document.getElementById('occasion-desc');
+ if (titleEl) titleEl.textContent = detail.title;
+ if (descEl) descEl.textContent = detail.desc;
+ }
+
+ function selectPublicSignQuiet(key) {
+ const btns = document.querySelectorAll('#public-sign-tabs .chip');
+ const keys = ['library', 'station', 'hospital'];
+ btns.forEach((btn, idx) => {
+ const active = keys[idx] === key;
+ btn.classList.toggle('is-active', active);
+ btn.setAttribute('aria-pressed', String(active));
+ });
+ renderPublicSign();
+ }
+
+ function setupScrollReveal() {
+ const sections = document.querySelectorAll('.reveal-section');
+ if (!('IntersectionObserver' in window)) {
+ sections.forEach(s => s.classList.add('is-visible'));
+ return;
+ }
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => {
+ if (entry.isIntersecting) {
+ entry.target.classList.add('is-visible');
+ observer.unobserve(entry.target);
+ }
+ });
+ }, { threshold: 0.08 });
+ sections.forEach(s => observer.observe(s));
+ }
+
+ async function initApp() {
+ try {
+ if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+ const saved = await window.notebookAppApi.getAppState();
+ if (saved && typeof saved === 'object') {
+ appState = Object.assign(JSON.parse(JSON.stringify(DEFAULT_STATE)), saved);
+ }
+ }
+ } catch (err) {
+ // Fallback to default state
+ }
+
+ renderAll();
+ setupScrollReveal();
+
+ if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+ window.notebookAppApi.notifyAppReady();
+ }
+ }
+
+ document.addEventListener('DOMContentLoaded', initApp);
+ </script>
+</body>
+</html>
